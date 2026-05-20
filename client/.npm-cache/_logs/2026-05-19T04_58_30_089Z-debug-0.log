@@ -1,0 +1,283 @@
+0 verbose cli C:\Program Files\nodejs\node.exe C:\Users\Rakesh\AppData\Roaming\npm\node_modules\npm\bin\npm-cli.js
+1 info using npm@9.9.4
+2 info using node@v22.13.1
+3 timing npm:load:whichnode Completed in 8ms
+4 timing config:load:defaults Completed in 8ms
+5 timing config:load:file:C:\Users\Rakesh\AppData\Roaming\npm\node_modules\npm\npmrc Completed in 9ms
+6 timing config:load:builtin Completed in 9ms
+7 timing config:load:cli Completed in 4ms
+8 timing config:load:env Completed in 1ms
+9 timing config:load:file:C:\Users\CodexSandboxOffline\.codex\.sandbox\cwd\c1b834a6f09b7ff9\.npmrc Completed in 3ms
+10 timing config:load:project Completed in 7ms
+11 timing config:load:file:C:\Users\Rakesh\.npmrc Completed in 1ms
+12 timing config:load:user Completed in 2ms
+13 timing config:load:file:C:\Users\Rakesh\AppData\Roaming\npm\etc\npmrc Completed in 0ms
+14 timing config:load:global Completed in 0ms
+15 timing config:load:setEnvs Completed in 3ms
+16 timing config:load Completed in 37ms
+17 timing npm:load:configload Completed in 37ms
+18 timing config:load:flatten Completed in 7ms
+19 timing npm:load:mkdirpcache Completed in 3ms
+20 timing npm:load:mkdirplogs Completed in 2ms
+21 verbose title npm ci
+22 verbose argv "ci"
+23 timing npm:load:setTitle Completed in 4ms
+24 timing npm:load:display Completed in 3ms
+25 verbose logfile logs-max:10 dir:C:\Users\CodexSandboxOffline\.codex\.sandbox\cwd\c1b834a6f09b7ff9\.npm-cache\_logs\2026-05-19T04_58_30_089Z-
+26 verbose logfile C:\Users\CodexSandboxOffline\.codex\.sandbox\cwd\c1b834a6f09b7ff9\.npm-cache\_logs\2026-05-19T04_58_30_089Z-debug-0.log
+27 timing npm:load:logFile Completed in 32ms
+28 timing npm:load:timers Completed in 0ms
+29 timing npm:load:configScope Completed in 0ms
+30 timing npm:load Completed in 146ms
+31 timing arborist:ctor Completed in 2ms
+32 silly logfile done cleaning log files
+33 timing idealTree:init Completed in 122ms
+34 timing idealTree:userRequests Completed in 0ms
+35 silly idealTree buildDeps
+36 timing idealTree:#root Completed in 1ms
+37 timing idealTree:buildDeps Completed in 2ms
+38 timing idealTree:fixDepFlags Completed in 0ms
+39 timing idealTree Completed in 137ms
+40 timing npm-ci:rm Completed in 1ms
+41 timing reify:loadTrees Completed in 8ms
+42 timing reify:diffTrees Completed in 11ms
+43 silly reify moves {}
+44 timing reify:retireShallow Completed in 2ms
+45 timing reify:createSparse Completed in 289ms
+46 timing reify:loadBundles Completed in 0ms
+47 silly audit bulk request {
+47 silly audit   '@babel/code-frame': [ '7.27.1' ],
+47 silly audit   '@babel/compat-data': [ '7.28.4' ],
+47 silly audit   '@babel/core': [ '7.28.4' ],
+47 silly audit   '@babel/generator': [ '7.28.3' ],
+47 silly audit   '@babel/helper-compilation-targets': [ '7.27.2' ],
+47 silly audit   '@babel/helper-globals': [ '7.28.0' ],
+47 silly audit   '@babel/helper-module-imports': [ '7.27.1' ],
+47 silly audit   '@babel/helper-module-transforms': [ '7.28.3' ],
+47 silly audit   '@babel/helper-plugin-utils': [ '7.27.1' ],
+47 silly audit   '@babel/helper-string-parser': [ '7.27.1' ],
+47 silly audit   '@babel/helper-validator-identifier': [ '7.27.1' ],
+47 silly audit   '@babel/helper-validator-option': [ '7.27.1' ],
+47 silly audit   '@babel/helpers': [ '7.28.4' ],
+47 silly audit   '@babel/parser': [ '7.28.4' ],
+47 silly audit   '@babel/plugin-transform-react-jsx-self': [ '7.27.1' ],
+47 silly audit   '@babel/plugin-transform-react-jsx-source': [ '7.27.1' ],
+47 silly audit   '@babel/template': [ '7.27.2' ],
+47 silly audit   '@babel/traverse': [ '7.28.4' ],
+47 silly audit   '@babel/types': [ '7.28.4' ],
+47 silly audit   '@esbuild/win32-x64': [ '0.25.10' ],
+47 silly audit   '@eslint-community/eslint-utils': [ '4.9.0' ],
+47 silly audit   'eslint-visitor-keys': [ '3.4.3', '4.2.1' ],
+47 silly audit   '@eslint-community/regexpp': [ '4.12.1' ],
+47 silly audit   '@eslint/config-array': [ '0.21.0' ],
+47 silly audit   '@eslint/config-helpers': [ '0.4.0' ],
+47 silly audit   '@eslint/core': [ '0.16.0' ],
+47 silly audit   '@eslint/eslintrc': [ '3.3.1' ],
+47 silly audit   globals: [ '14.0.0', '16.4.0' ],
+47 silly audit   '@eslint/js': [ '9.37.0' ],
+47 silly audit   '@eslint/object-schema': [ '2.1.6' ],
+47 silly audit   '@eslint/plugin-kit': [ '0.4.0' ],
+47 silly audit   '@humanfs/core': [ '0.19.1' ],
+47 silly audit   '@humanfs/node': [ '0.16.7' ],
+47 silly audit   '@humanwhocodes/module-importer': [ '1.0.1' ],
+47 silly audit   '@humanwhocodes/retry': [ '0.4.3' ],
+47 silly audit   '@isaacs/fs-minipass': [ '4.0.1' ],
+47 silly audit   '@jridgewell/gen-mapping': [ '0.3.13' ],
+47 silly audit   '@jridgewell/remapping': [ '2.3.5' ],
+47 silly audit   '@jridgewell/resolve-uri': [ '3.1.2' ],
+47 silly audit   '@jridgewell/sourcemap-codec': [ '1.5.5' ],
+47 silly audit   '@jridgewell/trace-mapping': [ '0.3.31' ],
+47 silly audit   '@reduxjs/toolkit': [ '2.9.0' ],
+47 silly audit   '@rolldown/pluginutils': [ '1.0.0-beta.38' ],
+47 silly audit   '@rollup/rollup-win32-x64-gnu': [ '4.52.4' ],
+47 silly audit   '@rollup/rollup-win32-x64-msvc': [ '4.52.4' ],
+47 silly audit   '@standard-schema/spec': [ '1.0.0' ],
+47 silly audit   '@standard-schema/utils': [ '0.3.0' ],
+47 silly audit   '@tailwindcss/node': [ '4.1.14' ],
+47 silly audit   '@tailwindcss/oxide': [ '4.1.14' ],
+47 silly audit   '@tailwindcss/oxide-win32-x64-msvc': [ '4.1.14' ],
+47 silly audit   '@tailwindcss/vite': [ '4.1.14' ],
+47 silly audit   '@types/babel__core': [ '7.20.5' ],
+47 silly audit   '@types/babel__generator': [ '7.27.0' ],
+47 silly audit   '@types/babel__template': [ '7.4.4' ],
+47 silly audit   '@types/babel__traverse': [ '7.28.0' ],
+47 silly audit   '@types/d3-array': [ '3.2.2' ],
+47 silly audit   '@types/d3-color': [ '3.1.3' ],
+47 silly audit   '@types/d3-ease': [ '3.0.2' ],
+47 silly audit   '@types/d3-interpolate': [ '3.0.4' ],
+47 silly audit   '@types/d3-path': [ '3.1.1' ],
+47 silly audit   '@types/d3-scale': [ '4.0.9' ],
+47 silly audit   '@types/d3-shape': [ '3.1.7' ],
+47 silly audit   '@types/d3-time': [ '3.0.4' ],
+47 silly audit   '@types/d3-timer': [ '3.0.2' ],
+47 silly audit   '@types/estree': [ '1.0.8' ],
+47 silly audit   '@types/json-schema': [ '7.0.15' ],
+47 silly audit   '@types/react': [ '19.2.2' ],
+47 silly audit   '@types/react-dom': [ '19.2.1' ],
+47 silly audit   '@types/use-sync-external-store': [ '0.0.6' ],
+47 silly audit   '@vitejs/plugin-react': [ '5.0.4' ],
+47 silly audit   acorn: [ '8.15.0' ],
+47 silly audit   'acorn-jsx': [ '5.3.2' ],
+47 silly audit   ajv: [ '6.12.6' ],
+47 silly audit   'ansi-styles': [ '4.3.0' ],
+47 silly audit   argparse: [ '2.0.1' ],
+47 silly audit   'balanced-match': [ '1.0.2' ],
+47 silly audit   'baseline-browser-mapping': [ '2.8.16' ],
+47 silly audit   'brace-expansion': [ '1.1.12' ],
+47 silly audit   browserslist: [ '4.26.3' ],
+47 silly audit   callsites: [ '3.1.0' ],
+47 silly audit   'caniuse-lite': [ '1.0.30001750' ],
+47 silly audit   chalk: [ '4.1.2' ],
+47 silly audit   chownr: [ '3.0.0' ],
+47 silly audit   clsx: [ '2.1.1' ],
+47 silly audit   'color-convert': [ '2.0.1' ],
+47 silly audit   'color-name': [ '1.1.4' ],
+47 silly audit   'concat-map': [ '0.0.1' ],
+47 silly audit   'convert-source-map': [ '2.0.0' ],
+47 silly audit   cookie: [ '1.0.2' ],
+47 silly audit   'cross-spawn': [ '7.0.6' ],
+47 silly audit   csstype: [ '3.1.3' ],
+47 silly audit   'd3-array': [ '3.2.4' ],
+47 silly audit   'd3-color': [ '3.1.0' ],
+47 silly audit   'd3-ease': [ '3.0.1' ],
+47 silly audit   'd3-format': [ '3.1.0' ],
+47 silly audit   'd3-interpolate': [ '3.0.1' ],
+47 silly audit   'd3-path': [ '3.1.0' ],
+47 silly audit   'd3-scale': [ '4.0.2' ],
+47 silly audit   'd3-shape': [ '3.2.0' ],
+47 silly audit   'd3-time': [ '3.1.0' ],
+47 silly audit   'd3-time-format': [ '4.1.0' ],
+47 silly audit   'd3-timer': [ '3.0.1' ],
+47 silly audit   'date-fns': [ '4.1.0' ],
+47 silly audit   debug: [ '4.4.3' ],
+47 silly audit   'decimal.js-light': [ '2.5.1' ],
+47 silly audit   'deep-is': [ '0.1.4' ],
+47 silly audit   'detect-libc': [ '2.1.2' ],
+47 silly audit   'electron-to-chromium': [ '1.5.234' ],
+47 silly audit   'enhanced-resolve': [ '5.18.3' ],
+47 silly audit   'es-toolkit': [ '1.40.0' ],
+47 silly audit   esbuild: [ '0.25.10' ],
+47 silly audit   escalade: [ '3.2.0' ],
+47 silly audit   'escape-string-regexp': [ '4.0.0' ],
+47 silly audit   eslint: [ '9.37.0' ],
+47 silly audit   'eslint-plugin-react-hooks': [ '5.2.0' ],
+47 silly audit   'eslint-plugin-react-refresh': [ '0.4.23' ],
+47 silly audit   'eslint-scope': [ '8.4.0' ],
+47 silly audit   espree: [ '10.4.0' ],
+47 silly audit   esquery: [ '1.6.0' ],
+47 silly audit   esrecurse: [ '4.3.0' ],
+47 silly audit   estraverse: [ '5.3.0' ],
+47 silly audit   esutils: [ '2.0.3' ],
+47 silly audit   eventemitter3: [ '5.0.1' ],
+47 silly audit   'fast-deep-equal': [ '3.1.3' ],
+47 silly audit   'fast-json-stable-stringify': [ '2.1.0' ],
+47 silly audit   'fast-levenshtein': [ '2.0.6' ],
+47 silly audit   fdir: [ '6.5.0' ],
+47 silly audit   'file-entry-cache': [ '8.0.0' ],
+47 silly audit   'find-up': [ '5.0.0' ],
+47 silly audit   'flat-cache': [ '4.0.1' ],
+47 silly audit   flatted: [ '3.3.3' ],
+47 silly audit   gensync: [ '1.0.0-beta.2' ],
+47 silly audit   'glob-parent': [ '6.0.2' ],
+47 silly audit   goober: [ '2.1.18' ],
+47 silly audit   'graceful-fs': [ '4.2.11' ],
+47 silly audit   'has-flag': [ '4.0.0' ],
+47 silly audit   ignore: [ '5.3.2' ],
+47 silly audit   immer: [ '10.1.3' ],
+47 silly audit   'import-fresh': [ '3.3.1' ],
+47 silly audit   imurmurhash: [ '0.1.4' ],
+47 silly audit   internmap: [ '2.0.3' ],
+47 silly audit   'is-extglob': [ '2.1.1' ],
+47 silly audit   'is-glob': [ '4.0.3' ],
+47 silly audit   isexe: [ '2.0.0' ],
+47 silly audit   jiti: [ '2.6.1' ],
+47 silly audit   'js-tokens': [ '4.0.0' ],
+47 silly audit   'js-yaml': [ '4.1.0' ],
+47 silly audit   jsesc: [ '3.1.0' ],
+47 silly audit   'json-buffer': [ '3.0.1' ],
+47 silly audit   'json-schema-traverse': [ '0.4.1' ],
+47 silly audit   'json-stable-stringify-without-jsonify': [ '1.0.1' ],
+47 silly audit   json5: [ '2.2.3' ],
+47 silly audit   keyv: [ '4.5.4' ],
+47 silly audit   levn: [ '0.4.1' ],
+47 silly audit   lightningcss: [ '1.30.1' ],
+47 silly audit   'lightningcss-win32-x64-msvc': [ '1.30.1' ],
+47 silly audit   'locate-path': [ '6.0.0' ],
+47 silly audit   'lodash.merge': [ '4.6.2' ],
+47 silly audit   'lru-cache': [ '5.1.1' ],
+47 silly audit   'lucide-react': [ '0.540.0' ],
+47 silly audit   'magic-string': [ '0.30.19' ],
+47 silly audit   minimatch: [ '3.1.2' ],
+47 silly audit   minipass: [ '7.1.2' ],
+47 silly audit   minizlib: [ '3.1.0' ],
+47 silly audit   ms: [ '2.1.3' ],
+47 silly audit   nanoid: [ '3.3.11' ],
+47 silly audit   'natural-compare': [ '1.4.0' ],
+47 silly audit   'node-releases': [ '2.0.23' ],
+47 silly audit   optionator: [ '0.9.4' ],
+47 silly audit   'p-limit': [ '3.1.0' ],
+47 silly audit   'p-locate': [ '5.0.0' ],
+47 silly audit   'parent-module': [ '1.0.1' ],
+47 silly audit   'path-exists': [ '4.0.0' ],
+47 silly audit   'path-key': [ '3.1.1' ],
+47 silly audit   picocolors: [ '1.1.1' ],
+47 silly audit   picomatch: [ '4.0.3' ],
+47 silly audit   postcss: [ '8.5.6' ],
+47 silly audit   'prelude-ls': [ '1.2.1' ],
+47 silly audit   punycode: [ '2.3.1' ],
+47 silly audit   react: [ '19.2.0' ],
+47 silly audit   'react-dom': [ '19.2.0' ],
+47 silly audit   'react-hot-toast': [ '2.6.0' ],
+47 silly audit   'react-is': [ '19.2.0' ],
+47 silly audit   'react-redux': [ '9.2.0' ],
+47 silly audit   'react-refresh': [ '0.17.0' ],
+47 silly audit   'react-router': [ '7.9.4' ],
+47 silly audit   'react-router-dom': [ '7.9.4' ],
+47 silly audit   recharts: [ '3.2.1' ],
+47 silly audit   redux: [ '5.0.1' ],
+47 silly audit   'redux-thunk': [ '3.1.0' ],
+47 silly audit   reselect: [ '5.1.1' ],
+47 silly audit   'resolve-from': [ '4.0.0' ],
+47 silly audit   rollup: [ '4.52.4' ],
+47 silly audit   scheduler: [ '0.27.0' ],
+47 silly audit   semver: [ '6.3.1' ],
+47 silly audit   'set-cookie-parser': [ '2.7.1' ],
+47 silly audit   'shebang-command': [ '2.0.0' ],
+47 silly audit   'shebang-regex': [ '3.0.0' ],
+47 silly audit   'source-map-js': [ '1.2.1' ],
+47 silly audit   'strip-json-comments': [ '3.1.1' ],
+47 silly audit   'supports-color': [ '7.2.0' ],
+47 silly audit   tailwindcss: [ '4.1.14' ],
+47 silly audit   tapable: [ '2.3.0' ],
+47 silly audit   tar: [ '7.5.1' ],
+47 silly audit   yallist: [ '5.0.0', '3.1.1' ],
+47 silly audit   'tiny-invariant': [ '1.3.3' ],
+47 silly audit   tinyglobby: [ '0.2.15' ],
+47 silly audit   'type-check': [ '0.4.0' ],
+47 silly audit   'update-browserslist-db': [ '1.1.3' ],
+47 silly audit   'uri-js': [ '4.4.1' ],
+47 silly audit   'use-sync-external-store': [ '1.6.0' ],
+47 silly audit   'victory-vendor': [ '37.3.6' ],
+47 silly audit   vite: [ '7.1.9' ],
+47 silly audit   which: [ '2.0.2' ],
+47 silly audit   'word-wrap': [ '1.2.5' ],
+47 silly audit   'yocto-queue': [ '0.1.0' ]
+47 silly audit }
+48 silly audit bulk request failed undefined
+49 verbose audit error FetchError: request to https://registry.npmjs.org/-/npm/v1/security/audits/quick failed, reason: 
+49 verbose audit error     at ClientRequest.<anonymous> (C:\Users\Rakesh\AppData\Roaming\npm\node_modules\npm\node_modules\minipass-fetch\lib\index.js:130:14)
+49 verbose audit error     at ClientRequest.emit (node:events:524:28)
+49 verbose audit error     at emitErrorEvent (node:_http_client:104:11)
+49 verbose audit error     at TLSSocket.socketErrorListener (node:_http_client:518:5)
+49 verbose audit error     at TLSSocket.emit (node:events:536:35)
+49 verbose audit error     at emitErrorNT (node:internal/streams/destroy:170:8)
+49 verbose audit error     at emitErrorCloseNT (node:internal/streams/destroy:129:3)
+49 verbose audit error     at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+49 verbose audit error   code: 'EACCES',
+49 verbose audit error   errno: 'EACCES',
+49 verbose audit error   type: 'system'
+49 verbose audit error }
+50 silly audit error undefined
+51 timing auditReport:getReport Completed in 2998ms
+52 silly audit report null
+53 timing reify:audit Completed in 3000ms

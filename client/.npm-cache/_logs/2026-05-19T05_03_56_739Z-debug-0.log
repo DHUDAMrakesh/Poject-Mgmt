@@ -1,0 +1,723 @@
+0 verbose cli C:\Program Files\nodejs\node.exe C:\Users\Rakesh\AppData\Roaming\npm\node_modules\npm\bin\npm-cli.js
+1 info using npm@9.9.4
+2 info using node@v22.13.1
+3 timing npm:load:whichnode Completed in 5ms
+4 timing config:load:defaults Completed in 4ms
+5 timing config:load:file:C:\Users\Rakesh\AppData\Roaming\npm\node_modules\npm\npmrc Completed in 5ms
+6 timing config:load:builtin Completed in 5ms
+7 timing config:load:cli Completed in 2ms
+8 timing config:load:env Completed in 1ms
+9 timing config:load:file:F:\Project-Management\client\.npmrc Completed in 1ms
+10 timing config:load:project Completed in 3ms
+11 timing config:load:file:C:\Users\Rakesh\.npmrc Completed in 0ms
+12 timing config:load:user Completed in 0ms
+13 timing config:load:file:C:\Users\Rakesh\AppData\Roaming\npm\etc\npmrc Completed in 0ms
+14 timing config:load:global Completed in 1ms
+15 timing config:load:setEnvs Completed in 1ms
+16 timing config:load Completed in 17ms
+17 timing npm:load:configload Completed in 17ms
+18 timing config:load:flatten Completed in 5ms
+19 timing npm:load:mkdirpcache Completed in 0ms
+20 timing npm:load:mkdirplogs Completed in 1ms
+21 verbose title npm i
+22 verbose argv "i"
+23 timing npm:load:setTitle Completed in 1ms
+24 timing npm:load:display Completed in 1ms
+25 verbose logfile logs-max:10 dir:F:\Project-Management\client\.npm-cache\_logs\2026-05-19T05_03_56_739Z-
+26 verbose logfile F:\Project-Management\client\.npm-cache\_logs\2026-05-19T05_03_56_739Z-debug-0.log
+27 timing npm:load:logFile Completed in 17ms
+28 timing npm:load:timers Completed in 0ms
+29 timing npm:load:configScope Completed in 0ms
+30 timing npm:load Completed in 63ms
+31 timing arborist:ctor Completed in 1ms
+32 silly logfile done cleaning log files
+33 timing idealTree:init Completed in 110ms
+34 timing idealTree:userRequests Completed in 0ms
+35 silly idealTree buildDeps
+36 timing idealTree:#root Completed in 1ms
+37 timing idealTree:buildDeps Completed in 3ms
+38 timing idealTree:fixDepFlags Completed in 0ms
+39 timing idealTree Completed in 118ms
+40 timing arborist:ctor Completed in 0ms
+41 timing reify:loadTrees Completed in 168ms
+42 timing reify:diffTrees Completed in 4ms
+43 silly reify moves {}
+44 timing reify:retireShallow Completed in 1ms
+45 timing reify:createSparse Completed in 0ms
+46 timing reify:loadBundles Completed in 0ms
+47 silly audit bulk request {
+47 silly audit   '@babel/code-frame': [ '7.27.1' ],
+47 silly audit   '@babel/compat-data': [ '7.28.4' ],
+47 silly audit   '@babel/core': [ '7.28.4' ],
+47 silly audit   '@babel/generator': [ '7.28.3' ],
+47 silly audit   '@babel/helper-compilation-targets': [ '7.27.2' ],
+47 silly audit   '@babel/helper-globals': [ '7.28.0' ],
+47 silly audit   '@babel/helper-module-imports': [ '7.27.1' ],
+47 silly audit   '@babel/helper-module-transforms': [ '7.28.3' ],
+47 silly audit   '@babel/helper-plugin-utils': [ '7.27.1' ],
+47 silly audit   '@babel/helper-string-parser': [ '7.27.1' ],
+47 silly audit   '@babel/helper-validator-identifier': [ '7.27.1' ],
+47 silly audit   '@babel/helper-validator-option': [ '7.27.1' ],
+47 silly audit   '@babel/helpers': [ '7.28.4' ],
+47 silly audit   '@babel/parser': [ '7.28.4' ],
+47 silly audit   '@babel/plugin-transform-react-jsx-self': [ '7.27.1' ],
+47 silly audit   '@babel/plugin-transform-react-jsx-source': [ '7.27.1' ],
+47 silly audit   '@babel/template': [ '7.27.2' ],
+47 silly audit   '@babel/traverse': [ '7.28.4' ],
+47 silly audit   '@babel/types': [ '7.28.4' ],
+47 silly audit   '@esbuild/win32-x64': [ '0.25.10' ],
+47 silly audit   '@eslint-community/eslint-utils': [ '4.9.0' ],
+47 silly audit   'eslint-visitor-keys': [ '3.4.3', '4.2.1' ],
+47 silly audit   '@eslint-community/regexpp': [ '4.12.1' ],
+47 silly audit   '@eslint/config-array': [ '0.21.0' ],
+47 silly audit   '@eslint/config-helpers': [ '0.4.0' ],
+47 silly audit   '@eslint/core': [ '0.16.0' ],
+47 silly audit   '@eslint/eslintrc': [ '3.3.1' ],
+47 silly audit   globals: [ '14.0.0', '16.4.0' ],
+47 silly audit   '@eslint/js': [ '9.37.0' ],
+47 silly audit   '@eslint/object-schema': [ '2.1.6' ],
+47 silly audit   '@eslint/plugin-kit': [ '0.4.0' ],
+47 silly audit   '@humanfs/core': [ '0.19.1' ],
+47 silly audit   '@humanfs/node': [ '0.16.7' ],
+47 silly audit   '@humanwhocodes/module-importer': [ '1.0.1' ],
+47 silly audit   '@humanwhocodes/retry': [ '0.4.3' ],
+47 silly audit   '@isaacs/fs-minipass': [ '4.0.1' ],
+47 silly audit   '@jridgewell/gen-mapping': [ '0.3.13' ],
+47 silly audit   '@jridgewell/remapping': [ '2.3.5' ],
+47 silly audit   '@jridgewell/resolve-uri': [ '3.1.2' ],
+47 silly audit   '@jridgewell/sourcemap-codec': [ '1.5.5' ],
+47 silly audit   '@jridgewell/trace-mapping': [ '0.3.31' ],
+47 silly audit   '@reduxjs/toolkit': [ '2.9.0' ],
+47 silly audit   '@rolldown/pluginutils': [ '1.0.0-beta.38' ],
+47 silly audit   '@rollup/rollup-win32-x64-gnu': [ '4.52.4' ],
+47 silly audit   '@rollup/rollup-win32-x64-msvc': [ '4.52.4' ],
+47 silly audit   '@standard-schema/spec': [ '1.0.0' ],
+47 silly audit   '@standard-schema/utils': [ '0.3.0' ],
+47 silly audit   '@tailwindcss/node': [ '4.1.14' ],
+47 silly audit   '@tailwindcss/oxide': [ '4.1.14' ],
+47 silly audit   '@tailwindcss/oxide-win32-x64-msvc': [ '4.1.14' ],
+47 silly audit   '@tailwindcss/vite': [ '4.1.14' ],
+47 silly audit   '@types/babel__core': [ '7.20.5' ],
+47 silly audit   '@types/babel__generator': [ '7.27.0' ],
+47 silly audit   '@types/babel__template': [ '7.4.4' ],
+47 silly audit   '@types/babel__traverse': [ '7.28.0' ],
+47 silly audit   '@types/d3-array': [ '3.2.2' ],
+47 silly audit   '@types/d3-color': [ '3.1.3' ],
+47 silly audit   '@types/d3-ease': [ '3.0.2' ],
+47 silly audit   '@types/d3-interpolate': [ '3.0.4' ],
+47 silly audit   '@types/d3-path': [ '3.1.1' ],
+47 silly audit   '@types/d3-scale': [ '4.0.9' ],
+47 silly audit   '@types/d3-shape': [ '3.1.7' ],
+47 silly audit   '@types/d3-time': [ '3.0.4' ],
+47 silly audit   '@types/d3-timer': [ '3.0.2' ],
+47 silly audit   '@types/estree': [ '1.0.8' ],
+47 silly audit   '@types/json-schema': [ '7.0.15' ],
+47 silly audit   '@types/react': [ '19.2.2' ],
+47 silly audit   '@types/react-dom': [ '19.2.1' ],
+47 silly audit   '@types/use-sync-external-store': [ '0.0.6' ],
+47 silly audit   '@vitejs/plugin-react': [ '5.0.4' ],
+47 silly audit   acorn: [ '8.15.0' ],
+47 silly audit   'acorn-jsx': [ '5.3.2' ],
+47 silly audit   ajv: [ '6.12.6' ],
+47 silly audit   'ansi-styles': [ '4.3.0' ],
+47 silly audit   argparse: [ '2.0.1' ],
+47 silly audit   'balanced-match': [ '1.0.2' ],
+47 silly audit   'baseline-browser-mapping': [ '2.8.16' ],
+47 silly audit   'brace-expansion': [ '1.1.12' ],
+47 silly audit   browserslist: [ '4.26.3' ],
+47 silly audit   callsites: [ '3.1.0' ],
+47 silly audit   'caniuse-lite': [ '1.0.30001750' ],
+47 silly audit   chalk: [ '4.1.2' ],
+47 silly audit   chownr: [ '3.0.0' ],
+47 silly audit   clsx: [ '2.1.1' ],
+47 silly audit   'color-convert': [ '2.0.1' ],
+47 silly audit   'color-name': [ '1.1.4' ],
+47 silly audit   'concat-map': [ '0.0.1' ],
+47 silly audit   'convert-source-map': [ '2.0.0' ],
+47 silly audit   cookie: [ '1.0.2' ],
+47 silly audit   'cross-spawn': [ '7.0.6' ],
+47 silly audit   csstype: [ '3.1.3' ],
+47 silly audit   'd3-array': [ '3.2.4' ],
+47 silly audit   'd3-color': [ '3.1.0' ],
+47 silly audit   'd3-ease': [ '3.0.1' ],
+47 silly audit   'd3-format': [ '3.1.0' ],
+47 silly audit   'd3-interpolate': [ '3.0.1' ],
+47 silly audit   'd3-path': [ '3.1.0' ],
+47 silly audit   'd3-scale': [ '4.0.2' ],
+47 silly audit   'd3-shape': [ '3.2.0' ],
+47 silly audit   'd3-time': [ '3.1.0' ],
+47 silly audit   'd3-time-format': [ '4.1.0' ],
+47 silly audit   'd3-timer': [ '3.0.1' ],
+47 silly audit   'date-fns': [ '4.1.0' ],
+47 silly audit   debug: [ '4.4.3' ],
+47 silly audit   'decimal.js-light': [ '2.5.1' ],
+47 silly audit   'deep-is': [ '0.1.4' ],
+47 silly audit   'detect-libc': [ '2.1.2' ],
+47 silly audit   'electron-to-chromium': [ '1.5.234' ],
+47 silly audit   'enhanced-resolve': [ '5.18.3' ],
+47 silly audit   'es-toolkit': [ '1.40.0' ],
+47 silly audit   esbuild: [ '0.25.10' ],
+47 silly audit   escalade: [ '3.2.0' ],
+47 silly audit   'escape-string-regexp': [ '4.0.0' ],
+47 silly audit   eslint: [ '9.37.0' ],
+47 silly audit   'eslint-plugin-react-hooks': [ '5.2.0' ],
+47 silly audit   'eslint-plugin-react-refresh': [ '0.4.23' ],
+47 silly audit   'eslint-scope': [ '8.4.0' ],
+47 silly audit   espree: [ '10.4.0' ],
+47 silly audit   esquery: [ '1.6.0' ],
+47 silly audit   esrecurse: [ '4.3.0' ],
+47 silly audit   estraverse: [ '5.3.0' ],
+47 silly audit   esutils: [ '2.0.3' ],
+47 silly audit   eventemitter3: [ '5.0.1' ],
+47 silly audit   'fast-deep-equal': [ '3.1.3' ],
+47 silly audit   'fast-json-stable-stringify': [ '2.1.0' ],
+47 silly audit   'fast-levenshtein': [ '2.0.6' ],
+47 silly audit   fdir: [ '6.5.0' ],
+47 silly audit   'file-entry-cache': [ '8.0.0' ],
+47 silly audit   'find-up': [ '5.0.0' ],
+47 silly audit   'flat-cache': [ '4.0.1' ],
+47 silly audit   flatted: [ '3.3.3' ],
+47 silly audit   gensync: [ '1.0.0-beta.2' ],
+47 silly audit   'glob-parent': [ '6.0.2' ],
+47 silly audit   goober: [ '2.1.18' ],
+47 silly audit   'graceful-fs': [ '4.2.11' ],
+47 silly audit   'has-flag': [ '4.0.0' ],
+47 silly audit   ignore: [ '5.3.2' ],
+47 silly audit   immer: [ '10.1.3' ],
+47 silly audit   'import-fresh': [ '3.3.1' ],
+47 silly audit   imurmurhash: [ '0.1.4' ],
+47 silly audit   internmap: [ '2.0.3' ],
+47 silly audit   'is-extglob': [ '2.1.1' ],
+47 silly audit   'is-glob': [ '4.0.3' ],
+47 silly audit   isexe: [ '2.0.0' ],
+47 silly audit   jiti: [ '2.6.1' ],
+47 silly audit   'js-tokens': [ '4.0.0' ],
+47 silly audit   'js-yaml': [ '4.1.0' ],
+47 silly audit   jsesc: [ '3.1.0' ],
+47 silly audit   'json-buffer': [ '3.0.1' ],
+47 silly audit   'json-schema-traverse': [ '0.4.1' ],
+47 silly audit   'json-stable-stringify-without-jsonify': [ '1.0.1' ],
+47 silly audit   json5: [ '2.2.3' ],
+47 silly audit   keyv: [ '4.5.4' ],
+47 silly audit   levn: [ '0.4.1' ],
+47 silly audit   lightningcss: [ '1.30.1' ],
+47 silly audit   'lightningcss-win32-x64-msvc': [ '1.30.1' ],
+47 silly audit   'locate-path': [ '6.0.0' ],
+47 silly audit   'lodash.merge': [ '4.6.2' ],
+47 silly audit   'lru-cache': [ '5.1.1' ],
+47 silly audit   'lucide-react': [ '0.540.0' ],
+47 silly audit   'magic-string': [ '0.30.19' ],
+47 silly audit   minimatch: [ '3.1.2' ],
+47 silly audit   minipass: [ '7.1.2' ],
+47 silly audit   minizlib: [ '3.1.0' ],
+47 silly audit   ms: [ '2.1.3' ],
+47 silly audit   nanoid: [ '3.3.11' ],
+47 silly audit   'natural-compare': [ '1.4.0' ],
+47 silly audit   'node-releases': [ '2.0.23' ],
+47 silly audit   optionator: [ '0.9.4' ],
+47 silly audit   'p-limit': [ '3.1.0' ],
+47 silly audit   'p-locate': [ '5.0.0' ],
+47 silly audit   'parent-module': [ '1.0.1' ],
+47 silly audit   'path-exists': [ '4.0.0' ],
+47 silly audit   'path-key': [ '3.1.1' ],
+47 silly audit   picocolors: [ '1.1.1' ],
+47 silly audit   picomatch: [ '4.0.3' ],
+47 silly audit   postcss: [ '8.5.6' ],
+47 silly audit   'prelude-ls': [ '1.2.1' ],
+47 silly audit   punycode: [ '2.3.1' ],
+47 silly audit   react: [ '19.2.0' ],
+47 silly audit   'react-dom': [ '19.2.0' ],
+47 silly audit   'react-hot-toast': [ '2.6.0' ],
+47 silly audit   'react-is': [ '19.2.0' ],
+47 silly audit   'react-redux': [ '9.2.0' ],
+47 silly audit   'react-refresh': [ '0.17.0' ],
+47 silly audit   'react-router': [ '7.9.4' ],
+47 silly audit   'react-router-dom': [ '7.9.4' ],
+47 silly audit   recharts: [ '3.2.1' ],
+47 silly audit   redux: [ '5.0.1' ],
+47 silly audit   'redux-thunk': [ '3.1.0' ],
+47 silly audit   reselect: [ '5.1.1' ],
+47 silly audit   'resolve-from': [ '4.0.0' ],
+47 silly audit   rollup: [ '4.52.4' ],
+47 silly audit   scheduler: [ '0.27.0' ],
+47 silly audit   semver: [ '6.3.1' ],
+47 silly audit   'set-cookie-parser': [ '2.7.1' ],
+47 silly audit   'shebang-command': [ '2.0.0' ],
+47 silly audit   'shebang-regex': [ '3.0.0' ],
+47 silly audit   'source-map-js': [ '1.2.1' ],
+47 silly audit   'strip-json-comments': [ '3.1.1' ],
+47 silly audit   'supports-color': [ '7.2.0' ],
+47 silly audit   tailwindcss: [ '4.1.14' ],
+47 silly audit   tapable: [ '2.3.0' ],
+47 silly audit   tar: [ '7.5.1' ],
+47 silly audit   yallist: [ '5.0.0', '3.1.1' ],
+47 silly audit   'tiny-invariant': [ '1.3.3' ],
+47 silly audit   tinyglobby: [ '0.2.15' ],
+47 silly audit   'type-check': [ '0.4.0' ],
+47 silly audit   'update-browserslist-db': [ '1.1.3' ],
+47 silly audit   'uri-js': [ '4.4.1' ],
+47 silly audit   'use-sync-external-store': [ '1.6.0' ],
+47 silly audit   'victory-vendor': [ '37.3.6' ],
+47 silly audit   vite: [ '7.1.9' ],
+47 silly audit   which: [ '2.0.2' ],
+47 silly audit   'word-wrap': [ '1.2.5' ],
+47 silly audit   'yocto-queue': [ '0.1.0' ]
+47 silly audit }
+48 timing reify:unpack Completed in 3ms
+49 timing reify:unretire Completed in 0ms
+50 timing build:queue Completed in 0ms
+51 timing build:deps Completed in 0ms
+52 timing build Completed in 0ms
+53 timing reify:build Completed in 1ms
+54 timing reify:trash Completed in 0ms
+55 timing reify:save Completed in 56ms
+56 http fetch POST 200 https://registry.npmjs.org/-/npm/v1/security/advisories/bulk 1564ms
+57 timing auditReport:getReport Completed in 1570ms
+58 silly audit report {
+58 silly audit report   ajv: [
+58 silly audit report     {
+58 silly audit report       id: 1113714,
+58 silly audit report       url: 'https://github.com/advisories/GHSA-2g4f-4pwh-qvx6',
+58 silly audit report       title: 'ajv has ReDoS when using `$data` option',
+58 silly audit report       severity: 'moderate',
+58 silly audit report       vulnerable_versions: '<6.14.0',
+58 silly audit report       cwe: [Array],
+58 silly audit report       cvss: [Object]
+58 silly audit report     }
+58 silly audit report   ],
+58 silly audit report   'brace-expansion': [
+58 silly audit report     {
+58 silly audit report       id: 1115540,
+58 silly audit report       url: 'https://github.com/advisories/GHSA-f886-m6hf-6m8v',
+58 silly audit report       title: 'brace-expansion: Zero-step sequence causes process hang and memory exhaustion',
+58 silly audit report       severity: 'moderate',
+58 silly audit report       vulnerable_versions: '<1.1.13',
+58 silly audit report       cwe: [Array],
+58 silly audit report       cvss: [Object]
+58 silly audit report     }
+58 silly audit report   ],
+58 silly audit report   flatted: [
+58 silly audit report     {
+58 silly audit report       id: 1114526,
+58 silly audit report       url: 'https://github.com/advisories/GHSA-25h7-pfq9-p65f',
+58 silly audit report       title: 'flatted vulnerable to unbounded recursion DoS in parse() revive phase',
+58 silly audit report       severity: 'high',
+58 silly audit report       vulnerable_versions: '<3.4.0',
+58 silly audit report       cwe: [Array],
+58 silly audit report       cvss: [Object]
+58 silly audit report     },
+58 silly audit report     {
+58 silly audit report       id: 1115357,
+58 silly audit report       url: 'https://github.com/advisories/GHSA-rf6f-7fwh-wjgh',
+58 silly audit report       title: 'Prototype Pollution via parse() in NodeJS flatted',
+58 silly audit report       severity: 'high',
+58 silly audit report       vulnerable_versions: '<=3.4.1',
+58 silly audit report       cwe: [Array],
+58 silly audit report       cvss: [Object]
+58 silly audit report     }
+58 silly audit report   ],
+58 silly audit report   'js-yaml': [
+58 silly audit report     {
+58 silly audit report       id: 1112715,
+58 silly audit report       url: 'https://github.com/advisories/GHSA-mh29-5h37-fv8m',
+58 silly audit report       title: 'js-yaml has prototype pollution in merge (<<)',
+58 silly audit report       severity: 'moderate',
+58 silly audit report       vulnerable_versions: '>=4.0.0 <4.1.1',
+58 silly audit report       cwe: [Array],
+58 silly audit report       cvss: [Object]
+58 silly audit report     }
+58 silly audit report   ],
+58 silly audit report   minimatch: [
+58 silly audit report     {
+58 silly audit report       id: 1113459,
+58 silly audit report       url: 'https://github.com/advisories/GHSA-3ppc-4f35-3m26',
+58 silly audit report       title: 'minimatch has a ReDoS via repeated wildcards with non-matching literal in pattern',
+58 silly audit report       severity: 'high',
+58 silly audit report       vulnerable_versions: '<3.1.3',
+58 silly audit report       cwe: [Array],
+58 silly audit report       cvss: [Object]
+58 silly audit report     },
+58 silly audit report     {
+58 silly audit report       id: 1113538,
+58 silly audit report       url: 'https://github.com/advisories/GHSA-7r86-cg39-jmmj',
+58 silly audit report       title: 'minimatch has ReDoS: matchOne() combinatorial backtracking via multiple non-adjacent GLOBSTAR segments',
+58 silly audit report       severity: 'high',
+58 silly audit report       vulnerable_versions: '<3.1.3',
+58 silly audit report       cwe: [Array],
+58 silly audit report       cvss: [Object]
+58 silly audit report     },
+58 silly audit report     {
+58 silly audit report       id: 1113546,
+58 silly audit report       url: 'https://github.com/advisories/GHSA-23c5-xmqv-rm74',
+58 silly audit report       title: 'minimatch ReDoS: nested *() extglobs generate catastrophically backtracking regular expressions',
+58 silly audit report       severity: 'high',
+58 silly audit report       vulnerable_versions: '<3.1.4',
+58 silly audit report       cwe: [Array],
+58 silly audit report       cvss: [Object]
+58 silly audit report     }
+58 silly audit report   ],
+58 silly audit report   picomatch: [
+58 silly audit report     {
+58 silly audit report       id: 1115551,
+58 silly audit report       url: 'https://github.com/advisories/GHSA-3v7f-55p6-f55p',
+58 silly audit report       title: 'Picomatch: Method Injection in POSIX Character Classes causes incorrect Glob Matching',
+58 silly audit report       severity: 'moderate',
+58 silly audit report       vulnerable_versions: '>=4.0.0 <4.0.4',
+58 silly audit report       cwe: [Array],
+58 silly audit report       cvss: [Object]
+58 silly audit report     },
+58 silly audit report     {
+58 silly audit report       id: 1115554,
+58 silly audit report       url: 'https://github.com/advisories/GHSA-c2c7-rcm5-vvqj',
+58 silly audit report       title: 'Picomatch has a ReDoS vulnerability via extglob quantifiers',
+58 silly audit report       severity: 'high',
+58 silly audit report       vulnerable_versions: '>=4.0.0 <4.0.4',
+58 silly audit report       cwe: [Array],
+58 silly audit report       cvss: [Object]
+58 silly audit report     }
+58 silly audit report   ],
+58 silly audit report   postcss: [
+58 silly audit report     {
+58 silly audit report       id: 1117015,
+58 silly audit report       url: 'https://github.com/advisories/GHSA-qx2v-qp2m-jg93',
+58 silly audit report       title: 'PostCSS has XSS via Unescaped </style> in its CSS Stringify Output',
+58 silly audit report       severity: 'moderate',
+58 silly audit report       vulnerable_versions: '<8.5.10',
+58 silly audit report       cwe: [Array],
+58 silly audit report       cvss: [Object]
+58 silly audit report     }
+58 silly audit report   ],
+58 silly audit report   'react-router': [
+58 silly audit report     {
+58 silly audit report       id: 1112051,
+58 silly audit report       url: 'https://github.com/advisories/GHSA-h5cw-625j-3rxh',
+58 silly audit report       title: 'React Router has CSRF issue in Action/Server Action Request Processing',
+58 silly audit report       severity: 'moderate',
+58 silly audit report       vulnerable_versions: '>=7.0.0 <=7.11.0',
+58 silly audit report       cwe: [Array],
+58 silly audit report       cvss: [Object]
+58 silly audit report     },
+58 silly audit report     {
+58 silly audit report       id: 1112053,
+58 silly audit report       url: 'https://github.com/advisories/GHSA-2w69-qvjg-hvjx',
+58 silly audit report       title: 'React Router vulnerable to XSS via Open Redirects',
+58 silly audit report       severity: 'high',
+58 silly audit report       vulnerable_versions: '>=7.0.0 <=7.11.0',
+58 silly audit report       cwe: [Array],
+58 silly audit report       cvss: [Object]
+58 silly audit report     },
+58 silly audit report     {
+58 silly audit report       id: 1112055,
+58 silly audit report       url: 'https://github.com/advisories/GHSA-8v8x-cx79-35w7',
+58 silly audit report       title: 'React Router SSR XSS in ScrollRestoration',
+58 silly audit report       severity: 'high',
+58 silly audit report       vulnerable_versions: '>=7.0.0 <7.12.0',
+58 silly audit report       cwe: [Array],
+58 silly audit report       cvss: [Object]
+58 silly audit report     },
+58 silly audit report     {
+58 silly audit report       id: 1112056,
+58 silly audit report       url: 'https://github.com/advisories/GHSA-9jcx-v3wj-wh4m',
+58 silly audit report       title: 'React Router has unexpected external redirect via untrusted paths',
+58 silly audit report       severity: 'moderate',
+58 silly audit report       vulnerable_versions: '>=7.0.0 <7.9.6',
+58 silly audit report       cwe: [Array],
+58 silly audit report       cvss: [Object]
+58 silly audit report     }
+58 silly audit report   ],
+58 silly audit report   rollup: [
+58 silly audit report     {
+58 silly audit report       id: 1113515,
+58 silly audit report       url: 'https://github.com/advisories/GHSA-mw96-cpmx-2vgc',
+58 silly audit report       title: 'Rollup 4 has Arbitrary File Write via Path Traversal',
+58 silly audit report       severity: 'high',
+58 silly audit report       vulnerable_versions: '>=4.0.0 <4.59.0',
+58 silly audit report       cwe: [Array],
+58 silly audit report       cvss: [Object]
+58 silly audit report     }
+58 silly audit report   ],
+58 silly audit report   tar: [
+58 silly audit report     {
+58 silly audit report       id: 1109463,
+58 silly audit report       url: 'https://github.com/advisories/GHSA-29xp-372q-xqph',
+58 silly audit report       title: 'node-tar has a race condition leading to uninitialized memory exposure',
+58 silly audit report       severity: 'moderate',
+58 silly audit report       vulnerable_versions: '=7.5.1',
+58 silly audit report       cwe: [Array],
+58 silly audit report       cvss: [Object]
+58 silly audit report     },
+58 silly audit report     {
+58 silly audit report       id: 1112659,
+58 silly audit report       url: 'https://github.com/advisories/GHSA-34x7-hfp2-rc4v',
+58 silly audit report       title: 'node-tar Vulnerable to Arbitrary File Creation/Overwrite via Hardlink Path Traversal',
+58 silly audit report       severity: 'high',
+58 silly audit report       vulnerable_versions: '<7.5.7',
+58 silly audit report       cwe: [Array],
+58 silly audit report       cvss: [Object]
+58 silly audit report     },
+58 silly audit report     {
+58 silly audit report       id: 1113300,
+58 silly audit report       url: 'https://github.com/advisories/GHSA-8qq5-rm4j-mr97',
+58 silly audit report       title: 'node-tar is Vulnerable to Arbitrary File Overwrite and Symlink Poisoning via Insufficient Path Sanitization',
+58 silly audit report       severity: 'high',
+58 silly audit report       vulnerable_versions: '<=7.5.2',
+58 silly audit report       cwe: [Array],
+58 silly audit report       cvss: [Object]
+58 silly audit report     },
+58 silly audit report     {
+58 silly audit report       id: 1113375,
+58 silly audit report       url: 'https://github.com/advisories/GHSA-83g3-92jg-28cx',
+58 silly audit report       title: 'Arbitrary File Read/Write via Hardlink Target Escape Through Symlink Chain in node-tar Extraction',
+58 silly audit report       severity: 'high',
+58 silly audit report       vulnerable_versions: '<7.5.8',
+58 silly audit report       cwe: [Array],
+58 silly audit report       cvss: [Object]
+58 silly audit report     },
+58 silly audit report     {
+58 silly audit report       id: 1114200,
+58 silly audit report       url: 'https://github.com/advisories/GHSA-qffp-2rhf-9h96',
+58 silly audit report       title: 'tar has Hardlink Path Traversal via Drive-Relative Linkpath',
+58 silly audit report       severity: 'high',
+58 silly audit report       vulnerable_versions: '<=7.5.9',
+58 silly audit report       cwe: [Array],
+58 silly audit report       cvss: [Object]
+58 silly audit report     },
+58 silly audit report     {
+58 silly audit report       id: 1114302,
+58 silly audit report       url: 'https://github.com/advisories/GHSA-9ppj-qmqm-q256',
+58 silly audit report       title: 'node-tar Symlink Path Traversal via Drive-Relative Linkpath',
+58 silly audit report       severity: 'high',
+58 silly audit report       vulnerable_versions: '<=7.5.10',
+58 silly audit report       cwe: [Array],
+58 silly audit report       cvss: [Object]
+58 silly audit report     },
+58 silly audit report     {
+58 silly audit report       id: 1114680,
+58 silly audit report       url: 'https://github.com/advisories/GHSA-r6q2-hw4h-h46w',
+58 silly audit report       title: 'Race Condition in node-tar Path Reservations via Unicode Ligature Collisions on macOS APFS',
+58 silly audit report       severity: 'high',
+58 silly audit report       vulnerable_versions: '<=7.5.3',
+58 silly audit report       cwe: [Array],
+58 silly audit report       cvss: [Object]
+58 silly audit report     }
+58 silly audit report   ],
+58 silly audit report   vite: [
+58 silly audit report     {
+58 silly audit report       id: 1109137,
+58 silly audit report       url: 'https://github.com/advisories/GHSA-93m4-6634-74q7',
+58 silly audit report       title: 'vite allows server.fs.deny bypass via backslash on Windows',
+58 silly audit report       severity: 'moderate',
+58 silly audit report       vulnerable_versions: '>=7.1.0 <=7.1.10',
+58 silly audit report       cwe: [Array],
+58 silly audit report       cvss: [Object]
+58 silly audit report     },
+58 silly audit report     {
+58 silly audit report       id: 1116230,
+58 silly audit report       url: 'https://github.com/advisories/GHSA-4w7w-66w2-5vf9',
+58 silly audit report       title: 'Vite Vulnerable to Path Traversal in Optimized Deps `.map` Handling',
+58 silly audit report       severity: 'moderate',
+58 silly audit report       vulnerable_versions: '>=7.0.0 <=7.3.1',
+58 silly audit report       cwe: [Array],
+58 silly audit report       cvss: [Object]
+58 silly audit report     },
+58 silly audit report     {
+58 silly audit report       id: 1116232,
+58 silly audit report       url: 'https://github.com/advisories/GHSA-v2wj-q39q-566r',
+58 silly audit report       title: 'Vite: `server.fs.deny` bypassed with queries',
+58 silly audit report       severity: 'high',
+58 silly audit report       vulnerable_versions: '>=7.1.0 <=7.3.1',
+58 silly audit report       cwe: [Array],
+58 silly audit report       cvss: [Object]
+58 silly audit report     },
+58 silly audit report     {
+58 silly audit report       id: 1116235,
+58 silly audit report       url: 'https://github.com/advisories/GHSA-p9ff-h696-f583',
+58 silly audit report       title: 'Vite Vulnerable to Arbitrary File Read via Vite Dev Server WebSocket',
+58 silly audit report       severity: 'high',
+58 silly audit report       vulnerable_versions: '>=7.0.0 <=7.3.1',
+58 silly audit report       cwe: [Array],
+58 silly audit report       cvss: [Object]
+58 silly audit report     }
+58 silly audit report   ]
+58 silly audit report }
+59 timing metavuln:cache:get:security-advisory:brace-expansion:kIHgu1L8zIy7pY0wp6wYzUm7tst3xTM2tiSYrstcGK/XsO7o4p6zyuUSjq93oH1dvU2tbEvlSW+gaNbGIbeudw== Completed in 37ms
+60 timing metavuln:cache:get:security-advisory:flatted:oa7V2KnuHnLCPcrXFvcQLRAa1NASGJm9yZ+B92xpfwxan7PZyVrZjYAHt6LB51PFfA2mM8KGE+VHR+U5X/2uZw== Completed in 38ms
+61 timing metavuln:cache:get:security-advisory:ajv:u4HOZ0QFYFTDLqnZ5TPSC8VEvP+HMuGcZACJuTqG8bm/gunrgkQwsiiH2pbF9tNIl45RK0sW2ccPzEojb1k0xQ== Completed in 40ms
+62 timing metavuln:cache:get:security-advisory:js-yaml:621IdjBdZEeVoUcjWGl1jXN0jFDGaf7dIQMeaPVKf5MxqYprJztiOC0OHOUPVoayh7Cq/fTC8L5CqEb98qlE7w== Completed in 37ms
+63 timing metavuln:cache:get:security-advisory:flatted:uMG/3R828PE31LVzr7SnM2pFAXessH3XoRtonZYiGJtZfR5a//VWhmdMxy/RepstCydCDFxkci7fqEuzEvhnAA== Completed in 37ms
+64 timing metavuln:cache:get:security-advisory:minimatch:V/3cIcyAQcG1bwuH0e0PI9Qt5WRtbvb/WOz2mBxAfNzXf+Dvs9G1X05eHjnPq2b0TJY4zXXpqhCAkRAipgk3iQ== Completed in 38ms
+65 timing metavuln:cache:get:security-advisory:minimatch:kx7kRjUmjSYmgQBpfsU82Na4xORZqvqpRRSlOyPLadasPBl0YfFJCjIETC00BG7Gd2omQLizgz8/GnnE/hk+Jw== Completed in 37ms
+66 timing metavuln:cache:get:security-advisory:picomatch:2VXNT0aF/Oc+aljqzVZL+y7UYoRsun3f1sCqjauwt4R4X9DizyqvONZbNtH8U58EY1DnyPNR0Ul3cX6UkEWNqw== Completed in 37ms
+67 timing metavuln:cache:get:security-advisory:minimatch:tdaAHfWGUw/nl/W8ALWVH+LvG2E3gvo3P2FI/fVPxm3aZteLxWMOEuk/9iDk5O0/cZN/GRXnabt/mW/bfUoL/g== Completed in 37ms
+68 timing metavuln:cache:get:security-advisory:picomatch:PpR3fLr2OHopA+LsAWF3etD15aOC+jSmDwUcp4VQCTrR40wKvI/IGhhNd2qAhozxRYiHGwb06lLJm+b8SMoG/w== Completed in 36ms
+69 timing metavuln:cache:get:security-advisory:react-router:Z9ZnMZhMs0kkH/J3t/aL9QpwBSy8b6dTtbtupm3zIrvaseE+irLNZ4Pa30rdDlBAc09uHOmHFWlVqwKYy8XZ8Q== Completed in 36ms
+70 timing metavuln:cache:get:security-advisory:react-router:JQUxU4wfOFAgKcnwmW+VMHdSzrKtv3xFyRyeKOWIi8jb9f6KqlT18ypY6lB4pR1CnYS27i1LfUrCoeILoBuC1A== Completed in 36ms
+71 timing metavuln:cache:get:security-advisory:tar:yTPyur4X3lE39v7zdkE15v05LuZzee3Nh2S9FBJ4PraCijRulUq0MlWeW5nvqHC+T3FKxfh/RgcTEGjH+N98dA== Completed in 36ms
+72 timing metavuln:cache:get:security-advisory:react-router:LL/m6KQnMVH198UOSw04JpHxqJ4/ZhjExD0c/Huo6Fmskdm1ZfZJ879lKoThHmVkLX7jfV+Xn5a2Bn2h7bM+tA== Completed in 38ms
+73 timing metavuln:cache:get:security-advisory:postcss:685RVq5xScaqegAXk2BRJrsMaZmsz1d/volUoA67iVw3AvHhUlX03u+VPRrmo8iuObcSDvuZF+fuiOnLC9L1uA== Completed in 39ms
+74 timing metavuln:cache:get:security-advisory:react-router:FBGS8hIF+q4onquA82/T6j4VC0D/sJhY5HczORU31qZR0WoQu/pFjMOP9zPruTmht8jauggQbhmymblcDF+4kQ== Completed in 38ms
+75 timing metavuln:cache:get:security-advisory:rollup:j57+QiunRUdD0cUD+SOC+z9ahAKAX/ORqNrS8xn5EMmMoVNjDT6jDQ8+1zJZRvVKgeAjbBSmjAgyimjwq9Hhfg== Completed in 39ms
+76 timing metavuln:cache:get:security-advisory:tar:cbwMpzkxWE086TmEbj2aUk80Z6hlvP0jzlWS+XiX15JwqEtFzUgHyHj3QX4I6EZYk8tgcYPuNr3hYFVCQY6e3Q== Completed in 38ms
+77 timing metavuln:cache:get:security-advisory:tar:Bbf0Br7FJ1lJBIJDoLLFwjsDrbaYgLVqfrwr0ATzSQWEKW7Xp073S+5zxU9imRf4OqRJHo2MsCDeyKR0KRVsdA== Completed in 39ms
+78 timing metavuln:cache:get:security-advisory:tar:eeMx7uxRjV2T2ub1XcSZGVUMDQllh5SgBOjApRXoDwccZb2xPyoJEKCNDkl/ZQGHcurw9K/Nf+wQF6u7SWH6CQ== Completed in 39ms
+79 timing metavuln:cache:get:security-advisory:tar:vbDW3SJe6e2hhLv65iuyXehzCzEAirdu2MloZluu8ApJ5S0mpjZNCz+7tMRaz8WDOzMKfYQKi/M/IfcFNOa3Cw== Completed in 39ms
+80 timing metavuln:cache:get:security-advisory:vite:YKZN1cuK0pxcyIP3QXJZO734e2Qjk40j3+OYQl4HmvWqf3wNiu52G0d2+mIMZQml5XDCaqy2lJgHKYY4I1XsHQ== Completed in 40ms
+81 timing metavuln:cache:get:security-advisory:tar:qPQeYPFDBIedTWfYK3sbnScF6Ha7ouTs+wgndnz4PT5P+/K+GBD4epoPcYpXlu6AC7gSJlCJTJeuKbYAFoK9PA== Completed in 40ms
+82 timing metavuln:cache:get:security-advisory:vite:YKy4GOwNBzYPcn5Xa2ttFRubdc68zM0lpbEYfRzqKP4QtBRYJH9u3PgqUhIzxkCEAaL9OtJYNzj89wT4miRA2A== Completed in 39ms
+83 timing metavuln:cache:get:security-advisory:vite:KfZn8yxFghRSACYGvtoE5dS+n7MZ6IoDfxWttMT44/PEQln6urGt1L12TRUqdcGj/tg3v/t/GlXIj0Yl4wYTaQ== Completed in 40ms
+84 timing metavuln:cache:get:security-advisory:tar:UWW3Y4BpqE/fE3Qp2/QBaix5a7TZZoP7gM6asxPYL9ED9MweoK3ryao+Bp0Y6Y8Xds/rmjAafpG21YRYkP3N4g== Completed in 41ms
+85 timing metavuln:cache:get:security-advisory:vite:SCO1RRwPelWhJ/uWmFc7/ylctclEgPPJUhE0gRdbA8vEo5CpmXWDHQld5vZGRMty/O49XuvkGICdtbOr7Bggsg== Completed in 40ms
+86 http fetch GET 200 https://registry.npmjs.org/brace-expansion 362ms (cache revalidated)
+87 timing metavuln:packument:brace-expansion Completed in 363ms
+88 timing metavuln:load:security-advisory:brace-expansion:1115540 Completed in 0ms
+89 timing metavuln:calculate:security-advisory:brace-expansion:1115540 Completed in 363ms
+90 http fetch GET 200 https://registry.npmjs.org/tar 738ms (cache revalidated)
+91 timing metavuln:packument:tar Completed in 740ms
+92 timing metavuln:load:security-advisory:tar:1109463 Completed in 1ms
+93 timing metavuln:calculate:security-advisory:tar:1109463 Completed in 741ms
+94 timing metavuln:load:security-advisory:tar:1112659 Completed in 1ms
+95 timing metavuln:calculate:security-advisory:tar:1112659 Completed in 742ms
+96 timing metavuln:load:security-advisory:tar:1113300 Completed in 1ms
+97 timing metavuln:calculate:security-advisory:tar:1113300 Completed in 743ms
+98 timing metavuln:load:security-advisory:tar:1113375 Completed in 2ms
+99 timing metavuln:calculate:security-advisory:tar:1113375 Completed in 745ms
+100 timing metavuln:load:security-advisory:tar:1114200 Completed in 1ms
+101 timing metavuln:calculate:security-advisory:tar:1114200 Completed in 746ms
+102 timing metavuln:load:security-advisory:tar:1114302 Completed in 1ms
+103 timing metavuln:calculate:security-advisory:tar:1114302 Completed in 747ms
+104 timing metavuln:load:security-advisory:tar:1114680 Completed in 1ms
+105 timing metavuln:calculate:security-advisory:tar:1114680 Completed in 748ms
+106 http fetch GET 200 https://registry.npmjs.org/vite 753ms (cache revalidated)
+107 timing metavuln:packument:vite Completed in 779ms
+108 timing metavuln:load:security-advisory:vite:1109137 Completed in 6ms
+109 timing metavuln:calculate:security-advisory:vite:1109137 Completed in 786ms
+110 timing metavuln:load:security-advisory:vite:1116230 Completed in 7ms
+111 timing metavuln:calculate:security-advisory:vite:1116230 Completed in 793ms
+112 timing metavuln:load:security-advisory:vite:1116232 Completed in 5ms
+113 timing metavuln:calculate:security-advisory:vite:1116232 Completed in 799ms
+114 timing metavuln:load:security-advisory:vite:1116235 Completed in 4ms
+115 timing metavuln:calculate:security-advisory:vite:1116235 Completed in 804ms
+116 http fetch GET 200 https://registry.npmjs.org/minimatch 1218ms (cache revalidated)
+117 timing metavuln:packument:minimatch Completed in 1219ms
+118 timing metavuln:load:security-advisory:minimatch:1113459 Completed in 0ms
+119 timing metavuln:calculate:security-advisory:minimatch:1113459 Completed in 1221ms
+120 timing metavuln:load:security-advisory:minimatch:1113538 Completed in 1ms
+121 timing metavuln:calculate:security-advisory:minimatch:1113538 Completed in 1221ms
+122 timing metavuln:load:security-advisory:minimatch:1113546 Completed in 0ms
+123 timing metavuln:calculate:security-advisory:minimatch:1113546 Completed in 1221ms
+124 http fetch GET 200 https://registry.npmjs.org/picomatch 1239ms (cache revalidated)
+125 timing metavuln:packument:picomatch Completed in 1239ms
+126 timing metavuln:load:security-advisory:picomatch:1115551 Completed in 1ms
+127 timing metavuln:calculate:security-advisory:picomatch:1115551 Completed in 1240ms
+128 timing metavuln:load:security-advisory:picomatch:1115554 Completed in 0ms
+129 timing metavuln:calculate:security-advisory:picomatch:1115554 Completed in 1239ms
+130 http fetch GET 200 https://registry.npmjs.org/js-yaml 1484ms (cache revalidated)
+131 timing metavuln:packument:js-yaml Completed in 1485ms
+132 timing metavuln:load:security-advisory:js-yaml:1112715 Completed in 0ms
+133 timing metavuln:calculate:security-advisory:js-yaml:1112715 Completed in 1485ms
+134 http fetch GET 200 https://registry.npmjs.org/ajv 1491ms (cache revalidated)
+135 timing metavuln:packument:ajv Completed in 1497ms
+136 timing metavuln:load:security-advisory:ajv:1113714 Completed in 2ms
+137 timing metavuln:calculate:security-advisory:ajv:1113714 Completed in 1500ms
+138 http fetch GET 200 https://registry.npmjs.org/postcss 1536ms (cache revalidated)
+139 timing metavuln:packument:postcss Completed in 1541ms
+140 timing metavuln:load:security-advisory:postcss:1117015 Completed in 1ms
+141 timing metavuln:calculate:security-advisory:postcss:1117015 Completed in 1542ms
+142 http fetch GET 200 https://registry.npmjs.org/flatted 1701ms (cache revalidated)
+143 timing metavuln:packument:flatted Completed in 1702ms
+144 timing metavuln:load:security-advisory:flatted:1114526 Completed in 0ms
+145 timing metavuln:calculate:security-advisory:flatted:1114526 Completed in 1703ms
+146 timing metavuln:load:security-advisory:flatted:1115357 Completed in 1ms
+147 timing metavuln:calculate:security-advisory:flatted:1115357 Completed in 1703ms
+148 http fetch GET 200 https://registry.npmjs.org/rollup 1714ms (cache revalidated)
+149 timing metavuln:packument:rollup Completed in 1749ms
+150 timing metavuln:load:security-advisory:rollup:1113515 Completed in 6ms
+151 timing metavuln:calculate:security-advisory:rollup:1113515 Completed in 1755ms
+152 http fetch GET 200 https://registry.npmjs.org/react-router 1929ms (cache revalidated)
+153 timing metavuln:packument:react-router Completed in 1948ms
+154 timing metavuln:load:security-advisory:react-router:1112051 Completed in 13ms
+155 timing metavuln:calculate:security-advisory:react-router:1112051 Completed in 1961ms
+156 timing metavuln:load:security-advisory:react-router:1112053 Completed in 12ms
+157 timing metavuln:calculate:security-advisory:react-router:1112053 Completed in 1972ms
+158 timing metavuln:load:security-advisory:react-router:1112055 Completed in 15ms
+159 timing metavuln:calculate:security-advisory:react-router:1112055 Completed in 1987ms
+160 timing metavuln:load:security-advisory:react-router:1112056 Completed in 8ms
+161 timing metavuln:calculate:security-advisory:react-router:1112056 Completed in 1995ms
+162 timing metavuln:cache:get:security-advisory:@eslint/eslintrc:aTNWJFSkw5DS4SB2nZgnaAFFdAXCgYakUu7Vnu0VAj0AclpVyjznKIgNeS8Irm+NcHSORmoypttmDbChxemxqA== Completed in 4ms
+163 timing metavuln:cache:get:security-advisory:eslint:6kRX7Aokk76Jx6XoOHiMSU8BTR90SQMK5AZjmt7HFdN87a8DFzzjuJwsTWoA1xHp5ATdta4R7ud3Xw2YczLZlA== Completed in 3ms
+164 http fetch GET 200 https://registry.npmjs.org/eslint 305ms (cache revalidated)
+165 timing metavuln:packument:eslint Completed in 320ms
+166 timing metavuln:load:security-advisory:eslint:u4HOZ0QFYFTDLqnZ5TPSC8VEvP+HMuGcZACJuTqG8bm/gunrgkQwsiiH2pbF9tNIl45RK0sW2ccPzEojb1k0xQ== Completed in 1ms
+167 timing metavuln:calculate:security-advisory:eslint:u4HOZ0QFYFTDLqnZ5TPSC8VEvP+HMuGcZACJuTqG8bm/gunrgkQwsiiH2pbF9tNIl45RK0sW2ccPzEojb1k0xQ== Completed in 321ms
+168 http fetch GET 200 https://registry.npmjs.org/@eslint%2feslintrc 359ms (cache revalidated)
+169 timing metavuln:packument:@eslint/eslintrc Completed in 362ms
+170 timing metavuln:load:security-advisory:@eslint/eslintrc:u4HOZ0QFYFTDLqnZ5TPSC8VEvP+HMuGcZACJuTqG8bm/gunrgkQwsiiH2pbF9tNIl45RK0sW2ccPzEojb1k0xQ== Completed in 0ms
+171 timing metavuln:calculate:security-advisory:@eslint/eslintrc:u4HOZ0QFYFTDLqnZ5TPSC8VEvP+HMuGcZACJuTqG8bm/gunrgkQwsiiH2pbF9tNIl45RK0sW2ccPzEojb1k0xQ== Completed in 362ms
+172 timing metavuln:cache:get:security-advisory:minimatch:/0Er43jAJYtedmFf28LczeYNpugHuL8c0lEtKZQ3iahaosdPvdPdhmr9lB0BwJr6iZu9ORb4I2CUoET1WHhyuA== Completed in 2ms
+173 timing metavuln:load:security-advisory:minimatch:kIHgu1L8zIy7pY0wp6wYzUm7tst3xTM2tiSYrstcGK/XsO7o4p6zyuUSjq93oH1dvU2tbEvlSW+gaNbGIbeudw== Completed in 0ms
+174 timing metavuln:calculate:security-advisory:minimatch:kIHgu1L8zIy7pY0wp6wYzUm7tst3xTM2tiSYrstcGK/XsO7o4p6zyuUSjq93oH1dvU2tbEvlSW+gaNbGIbeudw== Completed in 2ms
+175 timing metavuln:cache:get:security-advisory:flat-cache:JhiW4rt37xHiozZ7KHa24qUwDKaqeEmfEKkkfEIx/3FvJpogNevZOLgbh2yXpecOg6mIB2Ykrg7bF88g6uOdtQ== Completed in 2ms
+176 http fetch GET 200 https://registry.npmjs.org/flat-cache 329ms (cache revalidated)
+177 timing metavuln:packument:flat-cache Completed in 330ms
+178 timing metavuln:load:security-advisory:flat-cache:oa7V2KnuHnLCPcrXFvcQLRAa1NASGJm9yZ+B92xpfwxan7PZyVrZjYAHt6LB51PFfA2mM8KGE+VHR+U5X/2uZw== Completed in 0ms
+179 timing metavuln:calculate:security-advisory:flat-cache:oa7V2KnuHnLCPcrXFvcQLRAa1NASGJm9yZ+B92xpfwxan7PZyVrZjYAHt6LB51PFfA2mM8KGE+VHR+U5X/2uZw== Completed in 330ms
+180 timing metavuln:cache:get:security-advisory:@eslint/eslintrc:+dj/LqpwTuLnMbBYuGIzIb6b3zspptDh0rakRHhZtIReGOQCQDIXFUqoHFXyUBrXqkKL96IYWa7gOtmMPQ2AIw== Completed in 6ms
+181 timing metavuln:load:security-advisory:@eslint/eslintrc:621IdjBdZEeVoUcjWGl1jXN0jFDGaf7dIQMeaPVKf5MxqYprJztiOC0OHOUPVoayh7Cq/fTC8L5CqEb98qlE7w== Completed in 0ms
+182 timing metavuln:calculate:security-advisory:@eslint/eslintrc:621IdjBdZEeVoUcjWGl1jXN0jFDGaf7dIQMeaPVKf5MxqYprJztiOC0OHOUPVoayh7Cq/fTC8L5CqEb98qlE7w== Completed in 6ms
+183 timing metavuln:cache:get:security-advisory:eslint:ev5azc2U50vUYTqLo2/jaU7l8ps6Yvlqzkyp5OLr37QKqPK3+eCnjR+sureWWgBbnj1subBH7GupBmACDEZ2Mw== Completed in 2ms
+184 timing metavuln:load:security-advisory:eslint:V/3cIcyAQcG1bwuH0e0PI9Qt5WRtbvb/WOz2mBxAfNzXf+Dvs9G1X05eHjnPq2b0TJY4zXXpqhCAkRAipgk3iQ== Completed in 1ms
+185 timing metavuln:calculate:security-advisory:eslint:V/3cIcyAQcG1bwuH0e0PI9Qt5WRtbvb/WOz2mBxAfNzXf+Dvs9G1X05eHjnPq2b0TJY4zXXpqhCAkRAipgk3iQ== Completed in 3ms
+186 timing metavuln:cache:get:security-advisory:@eslint/config-array:iswiKp5um/RTDbRwoLwTd6GOZwXgC1BLG6b1m/LIkBZsuw7EY4rvdz8xyhDm8cJ03tRn/L6ikTK/1eH08Dntjg== Completed in 5ms
+187 timing metavuln:cache:get:security-advisory:@eslint/eslintrc:ekjU9xvLMIGZ60VAS3cJiXhpLVygLLVhrX5j5gbU96muSnaowg56B//Z2ieRbqnSyEhXO09OAWrrIfGViIVogQ== Completed in 4ms
+188 timing metavuln:load:security-advisory:@eslint/eslintrc:V/3cIcyAQcG1bwuH0e0PI9Qt5WRtbvb/WOz2mBxAfNzXf+Dvs9G1X05eHjnPq2b0TJY4zXXpqhCAkRAipgk3iQ== Completed in 0ms
+189 timing metavuln:calculate:security-advisory:@eslint/eslintrc:V/3cIcyAQcG1bwuH0e0PI9Qt5WRtbvb/WOz2mBxAfNzXf+Dvs9G1X05eHjnPq2b0TJY4zXXpqhCAkRAipgk3iQ== Completed in 4ms
+190 http fetch GET 200 https://registry.npmjs.org/@eslint%2fconfig-array 670ms (cache revalidated)
+191 timing metavuln:packument:@eslint/config-array Completed in 671ms
+192 timing metavuln:load:security-advisory:@eslint/config-array:V/3cIcyAQcG1bwuH0e0PI9Qt5WRtbvb/WOz2mBxAfNzXf+Dvs9G1X05eHjnPq2b0TJY4zXXpqhCAkRAipgk3iQ== Completed in 0ms
+193 timing metavuln:calculate:security-advisory:@eslint/config-array:V/3cIcyAQcG1bwuH0e0PI9Qt5WRtbvb/WOz2mBxAfNzXf+Dvs9G1X05eHjnPq2b0TJY4zXXpqhCAkRAipgk3iQ== Completed in 672ms
+194 timing metavuln:cache:get:security-advisory:vite:1896PJFhctaSbXSFkEmazuMCQQkA1nbz5DrxHDHtiKB4X99Asbm7y1ZTlIkL5R9pEs7YC6gvIQ2ChVd58pkhtw== Completed in 4ms
+195 timing metavuln:load:security-advisory:vite:2VXNT0aF/Oc+aljqzVZL+y7UYoRsun3f1sCqjauwt4R4X9DizyqvONZbNtH8U58EY1DnyPNR0Ul3cX6UkEWNqw== Completed in 4ms
+196 timing metavuln:calculate:security-advisory:vite:2VXNT0aF/Oc+aljqzVZL+y7UYoRsun3f1sCqjauwt4R4X9DizyqvONZbNtH8U58EY1DnyPNR0Ul3cX6UkEWNqw== Completed in 8ms
+197 timing metavuln:cache:get:security-advisory:fdir:I7IZptQLXjhZ5TVjlLB1vJ5JfgkV8HlzAFySNm0W8XK7Klvz8UNk59CjMAZ1uqS4G0ttvhpXbZB8RE9vuO4PCA== Completed in 10ms
+198 timing metavuln:cache:get:security-advisory:tinyglobby:JbTUSH3GuHgnWPTwynmNc2XBjGvJ1kBIVuOXAIcVt2zAN9JAmGoGXkmSGRzahtsyELbqgzBAd3ywFXmJPwH9Ww== Completed in 9ms
+199 http fetch GET 200 https://registry.npmjs.org/tinyglobby 407ms (cache revalidated)
+200 timing metavuln:packument:tinyglobby Completed in 407ms
+201 timing metavuln:load:security-advisory:tinyglobby:2VXNT0aF/Oc+aljqzVZL+y7UYoRsun3f1sCqjauwt4R4X9DizyqvONZbNtH8U58EY1DnyPNR0Ul3cX6UkEWNqw== Completed in 0ms
+202 timing metavuln:calculate:security-advisory:tinyglobby:2VXNT0aF/Oc+aljqzVZL+y7UYoRsun3f1sCqjauwt4R4X9DizyqvONZbNtH8U58EY1DnyPNR0Ul3cX6UkEWNqw== Completed in 407ms
+203 http fetch GET 200 https://registry.npmjs.org/fdir 413ms (cache revalidated)
+204 timing metavuln:packument:fdir Completed in 414ms
+205 timing metavuln:load:security-advisory:fdir:2VXNT0aF/Oc+aljqzVZL+y7UYoRsun3f1sCqjauwt4R4X9DizyqvONZbNtH8U58EY1DnyPNR0Ul3cX6UkEWNqw== Completed in 0ms
+206 timing metavuln:calculate:security-advisory:fdir:2VXNT0aF/Oc+aljqzVZL+y7UYoRsun3f1sCqjauwt4R4X9DizyqvONZbNtH8U58EY1DnyPNR0Ul3cX6UkEWNqw== Completed in 414ms
+207 timing metavuln:cache:get:security-advisory:vite:anAQVIv9ku7SlSaOcqOIP5rn3R+PQqZRf2y4CHP3RuDjlGzMadSoRFi0ZZoT4by8hMtVpmy7xPCXBY2D5grCIA== Completed in 3ms
+208 timing metavuln:load:security-advisory:vite:685RVq5xScaqegAXk2BRJrsMaZmsz1d/volUoA67iVw3AvHhUlX03u+VPRrmo8iuObcSDvuZF+fuiOnLC9L1uA== Completed in 4ms
+209 timing metavuln:calculate:security-advisory:vite:685RVq5xScaqegAXk2BRJrsMaZmsz1d/volUoA67iVw3AvHhUlX03u+VPRrmo8iuObcSDvuZF+fuiOnLC9L1uA== Completed in 7ms
+210 timing metavuln:cache:get:security-advisory:react-router-dom:ngBAMbRWHk/2+e+qEAN9nDCxcjzbqZgkWlxZslUmZLdmbEiEEWEEuUISuL8Ewyyjmg7bESqSPIrG2Si5S7dOJA== Completed in 3ms
+211 http fetch GET 200 https://registry.npmjs.org/react-router-dom 359ms (cache revalidated)
+212 timing metavuln:packument:react-router-dom Completed in 374ms
+213 timing metavuln:load:security-advisory:react-router-dom:LL/m6KQnMVH198UOSw04JpHxqJ4/ZhjExD0c/Huo6Fmskdm1ZfZJ879lKoThHmVkLX7jfV+Xn5a2Bn2h7bM+tA== Completed in 15ms
+214 timing metavuln:calculate:security-advisory:react-router-dom:LL/m6KQnMVH198UOSw04JpHxqJ4/ZhjExD0c/Huo6Fmskdm1ZfZJ879lKoThHmVkLX7jfV+Xn5a2Bn2h7bM+tA== Completed in 390ms
+215 timing metavuln:cache:get:security-advisory:vite:SaJWDd5gEEZd3lHg31QWzLWgMkCzYHn5RvntQLmOGssdx9DgqFp1CHRkx1q//bJjITqFeBtPANooZCY8TRvk8g== Completed in 3ms
+216 timing metavuln:load:security-advisory:vite:j57+QiunRUdD0cUD+SOC+z9ahAKAX/ORqNrS8xn5EMmMoVNjDT6jDQ8+1zJZRvVKgeAjbBSmjAgyimjwq9Hhfg== Completed in 3ms
+217 timing metavuln:calculate:security-advisory:vite:j57+QiunRUdD0cUD+SOC+z9ahAKAX/ORqNrS8xn5EMmMoVNjDT6jDQ8+1zJZRvVKgeAjbBSmjAgyimjwq9Hhfg== Completed in 6ms
+218 timing metavuln:cache:get:security-advisory:@tailwindcss/oxide:gXf7YVtOX9pUYDKcSETXM+JiqSdrXz5Nre6tmgNFzC6vUNyWu7R4OPEEFAzwF9QVMcRD173pS8nhfSGcomwrkw== Completed in 7ms
+219 http fetch GET 200 https://registry.npmjs.org/@tailwindcss%2foxide 356ms (cache revalidated)
+220 timing metavuln:packument:@tailwindcss/oxide Completed in 376ms
+221 timing metavuln:load:security-advisory:@tailwindcss/oxide:yTPyur4X3lE39v7zdkE15v05LuZzee3Nh2S9FBJ4PraCijRulUq0MlWeW5nvqHC+T3FKxfh/RgcTEGjH+N98dA== Completed in 11ms
+222 timing metavuln:calculate:security-advisory:@tailwindcss/oxide:yTPyur4X3lE39v7zdkE15v05LuZzee3Nh2S9FBJ4PraCijRulUq0MlWeW5nvqHC+T3FKxfh/RgcTEGjH+N98dA== Completed in 389ms
+223 timing metavuln:cache:get:security-advisory:@tailwindcss/vite:GwOC3sJuJCmalZ+Qn5kyLcpP+xLtR6uengNlRCzuooI9K9wQacRGbxpqoHkRnmaFE7ldWHPXidoFIMfxnu7YZw== Completed in 6ms
+224 timing metavuln:cache:get:security-advisory:@vitejs/plugin-react:9QIXid7vHYqWUbt9qv4qzy8uYLzUu2/GYyo7g5PoqY0qoBumK4m1C24BBOneHNSL9JQyFbTyEKGklQD2llvhSg== Completed in 6ms
+225 http fetch GET 200 https://registry.npmjs.org/@tailwindcss%2fvite 448ms (cache revalidated)
+226 timing metavuln:packument:@tailwindcss/vite Completed in 465ms
+227 timing metavuln:load:security-advisory:@tailwindcss/vite:YKZN1cuK0pxcyIP3QXJZO734e2Qjk40j3+OYQl4HmvWqf3wNiu52G0d2+mIMZQml5XDCaqy2lJgHKYY4I1XsHQ== Completed in 16ms
+228 timing metavuln:calculate:security-advisory:@tailwindcss/vite:YKZN1cuK0pxcyIP3QXJZO734e2Qjk40j3+OYQl4HmvWqf3wNiu52G0d2+mIMZQml5XDCaqy2lJgHKYY4I1XsHQ== Completed in 483ms
+229 http fetch GET 200 https://registry.npmjs.org/@vitejs%2fplugin-react 521ms (cache revalidated)
+230 timing metavuln:packument:@vitejs/plugin-react Completed in 528ms
+231 timing metavuln:load:security-advisory:@vitejs/plugin-react:YKZN1cuK0pxcyIP3QXJZO734e2Qjk40j3+OYQl4HmvWqf3wNiu52G0d2+mIMZQml5XDCaqy2lJgHKYY4I1XsHQ== Completed in 1ms
+232 timing metavuln:calculate:security-advisory:@vitejs/plugin-react:YKZN1cuK0pxcyIP3QXJZO734e2Qjk40j3+OYQl4HmvWqf3wNiu52G0d2+mIMZQml5XDCaqy2lJgHKYY4I1XsHQ== Completed in 531ms
+233 timing auditReport:init Completed in 5162ms
+234 timing reify:audit Completed in 6734ms
+235 timing reify Completed in 6915ms
+236 timing command:i Completed in 7008ms
+237 verbose exit 0
+238 timing npm Completed in 7654ms
+239 info ok
