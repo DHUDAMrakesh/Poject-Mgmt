@@ -9,7 +9,7 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-  "build": "prisma generate",
+  "build": "node ./node_modules/prisma/build/index.js generate",
   "start": "node server.js"
 },
   "keywords": [],
