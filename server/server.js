@@ -4,13 +4,98 @@ dotenv.config();
 import express from "express";
 import cors from "cors";
 import { clerkMiddleware } from "@clerk/express";
+import { verifyWebhook } from "@clerk/backend/webhooks";
 import { serve } from "inngest/express";
 import { inngest, functions } from "./inngest/index.js";
-import e from "express";
+import prisma from "./configs/prisma.js";
+import workspaceRouter from "./Routes/workspaceRoutes.js";
+import { protect } from "./middleware/authMiddleware.js";
+import taskRouter from "./Routes/taskRoutes.js";
+import commentRouter from "./Routes/commentRoutes.js";
+import ProjectRouter from "./Routes/projectRoutes.js";
 
 const app = express();
 
 app.use(cors());
+
+app.post(
+  "/api/webhooks/clerk",
+  express.raw({ type: "application/json" }),
+  async (req, res) => {
+    const signingSecret =
+      process.env.CLERK_WEBHOOK_SECRET ||
+      process.env.CLERK_WEBHOOK_SIGNING_SECRET;
+
+    if (!signingSecret) {
+      return res.status(500).json({ message: "Missing Clerk webhook secret" });
+    }
+
+    const headers = new Headers();
+    for (const [key, value] of Object.entries(req.headers)) {
+      if (Array.isArray(value)) {
+        headers.set(key, value.join(", "));
+      } else if (value) {
+        headers.set(key, value);
+      }
+    }
+
+    const request = new Request(
+      `${req.protocol}://${req.get("host")}${req.originalUrl}`,
+      {
+        method: req.method,
+        headers,
+        body: req.body,
+      },
+    );
+
+    let event;
+    try {
+      event = await verifyWebhook(request, { signingSecret });
+    } catch (error) {
+      console.error("Clerk webhook verification failed:", error);
+      return res.status(400).json({ message: "Invalid webhook signature" });
+    }
+
+    const data = event.data;
+
+    try {
+      if (event.type === "user.created" || event.type === "user.updated") {
+        const email = data.email_addresses?.[0]?.email_address ?? "";
+        const name =
+          `${data.first_name || ""} ${data.last_name || ""}`.trim() ||
+          data.username ||
+          email;
+
+        await prisma.user.upsert({
+          where: { id: data.id },
+          create: {
+            id: data.id,
+            email,
+            name,
+            image: data.image_url ?? "",
+          },
+          update: {
+            email,
+            name,
+            image: data.image_url ?? "",
+          },
+        });
+      }
+
+      if (event.type === "user.deleted") {
+        await prisma.user.deleteMany({
+          where: { id: data.id },
+        });
+      }
+
+      return res.status(200).json({ received: true });
+    } catch (error) {
+      console.error("Clerk webhook handler failed:", error);
+      return res.status(500).json({ message: "Webhook handler failed" });
+    }
+  },
+);
+
 app.use(express.json());
 
 // Clerk (can stay here)
@@ -25,6 +110,11 @@ app.use(
   }),
 );
 
+// Routes
+app.use("/api/workspaces", protect, workspaceRouter);
+app.use("/api/projects", protect, ProjectRouter);
+app.use("/api/tasks", protect, taskRouter);
+app.use("/api/comments", protect, commentRouter);
 app.get("/", (req, res) => {
   res.send("Server is Live");
 });

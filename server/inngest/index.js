@@ -1,5 +1,6 @@
 import { Inngest } from "inngest";
 import prisma from "../configs/prisma.js";
+import sendEmail from "../configs/nodemailer.js";
 
 export const inngest = new Inngest({ id: "project-management" });
 
@@ -77,22 +78,40 @@ export const syncWorkspaceCreation = inngest.createFunction(
   async ({ event }) => {
     const data = event.data;
 
-    await prisma.workspace.create({
-      data: {
-        id: data.id,
-        name: data.name,
-        slug: data.slug,
-        ownerId: data.created_by,
-        image_url: data.image_url,
-      },
-    });
+    await prisma.$transaction(async (tx) => {
+      await tx.workspace.upsert({
+        where: { id: data.id },
+        create: {
+          id: data.id,
+          name: data.name,
+          slug: data.slug,
+          ownerId: data.created_by,
+          image_url: data.image_url,
+        },
+        update: {
+          name: data.name,
+          slug: data.slug,
+          ownerId: data.created_by,
+          image_url: data.image_url,
+        },
+      });
 
-    await prisma.workspaceMember.create({
-      data: {
-        userId: data.created_by,
-        workspaceId: data.id,
-        role: "admin",
-      },
+      await tx.workspaceMember.upsert({
+        where: {
+          userId_workspaceId: {
+            userId: data.created_by,
+            workspaceId: data.id,
+          },
+        },
+        create: {
+          userId: data.created_by,
+          workspaceId: data.id,
+          role: "ADMIN",
+        },
+        update: {
+          role: "ADMIN",
+        },
+      });
     });
   },
 );
@@ -143,14 +162,83 @@ export const syncWorkspaceMemberCreation = inngest.createFunction(
   },
   async ({ event }) => {
     const data = event.data;
+    const role = String(data.role_name || "MEMBER").toUpperCase();
 
-    await prisma.workspaceMember.create({
-      data: {
+    await prisma.workspaceMember.upsert({
+      where: {
+        userId_workspaceId: {
+          userId: data.user_id,
+          workspaceId: data.organization_id,
+        },
+      },
+      create: {
         userId: data.user_id,
         workspaceId: data.organization_id,
-        role: String(data.role_name),
+        role: role === "ADMIN" ? "ADMIN" : "MEMBER",
+      },
+      update: {
+        role: role === "ADMIN" ? "ADMIN" : "MEMBER",
       },
     });
+  },
+);
+
+// Inngest function to send email on task creation
+const sendTaskAssignmentEmail = inngest.createFunction(
+  {
+    id: "send-task-assignment-email",
+    triggers: [
+      {
+        event: "app/task.assigned",
+      },
+    ],
+  },
+  async ({ event, step }) => {
+    const { taskId, origin } = event.data;
+
+    const task = await prisma.task.findUnique({
+      where: { id: taskId },
+      include: {
+        assignee: true,
+        project: true,
+      },
+    });
+
+    await sendEmail({
+      to: task.assignee.email,
+      subject: `New Task Assigned: ${task.project.name}`,
+      body: `
+        Hi ${task.assignee.name}, <br/><br/>
+        You have been assigned a new task: <b>${task.title}</b><br/>
+        Due Date: ${new Date(task.due_date).toLocaleDateString()}<br/><br/>
+        <a href="${origin}">View Task</a>
+      `,
+    });
+    if (
+      new Date(task.due_date).toLocaleDateString() !== new Date().toDateString()
+    ) {
+      await step.sleepUntil("wait-for-the-due-date", new Date(task.due_date));
+      await step.run("check-if-task-is-complete", async () => {
+        const task = await prisma.task.findUnique({
+          where: { id: taskId },
+          include: { assignee: true, project: true },
+        });
+        if (!task) return;
+
+        if (task.status !== "COMPLETED") {
+          await step.run("send-task-reminder-email", async () => {
+            await sendEmail({
+              to: task.assignee.email,
+              subject: `Reminder: Task "${task.project.name}" is due today!`,
+              body: `Hi ${task.assignee.name}, <br/><br/>
+        You have been assigned a new task: <b>${task.title}</b><br/>
+        Due Date: ${new Date(task.due_date).toLocaleDateString()}<br/><br/>
+        <a href="${origin}">View Task</a>`,
+            });
+          });
+        }
+      });
+    }
   },
 );
 
@@ -162,4 +250,5 @@ export const functions = [
   syncWorkspaceUpdation,
   syncWorkspaceDeletion,
   syncWorkspaceMemberCreation,
+  sendTaskAssignmentEmail,
 ];
