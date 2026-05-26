@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { loadTheme } from '../features/themeSlice'
 import { Loader2Icon } from 'lucide-react'
-import { useUser, SignIn, useAuth, CreateOrganization, useOrganizationList } from '@clerk/clerk-react'
+import {useUser,SignIn,useAuth, CreateOrganization} from '@clerk/clerk-react'
 import { fetchWorkspaces } from '../features/workspaceSlice'
 const Layout = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false)
@@ -13,30 +13,25 @@ const Layout = () => {
     const dispatch = useDispatch()
     const {getToken} = useAuth()
    
-    const { user,isLoaded } = useUser()
-    const { userMemberships, isLoaded: orgsLoaded } = useOrganizationList({
-        userMemberships: true,
-    })
-    const hasOrganizations = Boolean(userMemberships?.data?.length)
-
+    
+const { user,isLoaded } = useUser()
     // Initial load of theme
     useEffect(() => {
         dispatch(loadTheme())
     }, [])
-
-    // Initial load of workspace, then keep checking while Clerk finishes org sync.
-    useEffect(()=>{
-        if (isLoaded && user && workspaces.length === 0) {
+// Initial load of workspace, then keep checking while Clerk finishes org sync.
+useEffect(()=>{
+    if(isLoaded && user && workspaces.length===0){
+        dispatch(fetchWorkspaces({getToken}))
+        const intervalId = setInterval(() => {
             dispatch(fetchWorkspaces({getToken}))
-            const intervalId = setInterval(() => {
-                dispatch(fetchWorkspaces({getToken}))
-            }, 2000)
+        }, 2000)
 
-            return () => clearInterval(intervalId)
-        }
-    },[dispatch, getToken, user, isLoaded, orgsLoaded, workspaces.length])
+        return () => clearInterval(intervalId)
+    }
+},[dispatch, getToken, user, isLoaded, workspaces.length])
 
-    if(!user){
+if(!user){
     return(
         <div className='flex justify-center items-center h-screen bg-white dark:bg-zinc-950'>
 <SignIn />
@@ -49,29 +44,10 @@ const Layout = () => {
         </div>
     )
 
-    if (user && initialized && workspaces.length === 0) {
-        if (!orgsLoaded) {
-            return (
-                <div className='flex items-center justify-center h-screen bg-white dark:bg-zinc-950'>
-                    <Loader2Icon className="size-7 text-blue-500 animate-spin" />
-                </div>
-            )
-        }
-
-        if (hasOrganizations) {
-            return (
-                <div className='min-h-screen flex flex-col items-center justify-center '>
-                    <Loader2Icon className="size-7 text-blue-500 animate-spin" />
-                    <p className="mt-4 text-sm text-gray-600 dark:text-zinc-300">
-                        Organization created. Finishing workspace sync...
-                    </p>
-                </div>
-            )
-        }
-
+    if(user && initialized && workspaces.length===0){
         return(
             <div className='min-h-screen flex flex-col items-center justify-center '>
-                <CreateOrganization afterCreateOrganizationUrl="/" />
+<CreateOrganization afterCreateOrganizationUrl="/" />
             </div>
         )
     }
