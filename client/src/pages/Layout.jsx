@@ -1,35 +1,75 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback, useMemo, useRef } from 'react'
 import Navbar from '../components/Navbar'
 import Sidebar from '../components/Sidebar'
 import { Outlet } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { loadTheme } from '../features/themeSlice'
 import { Loader2Icon } from 'lucide-react'
-import {useUser,SignIn,useAuth, CreateOrganization} from '@clerk/clerk-react'
+import {useUser,SignIn,useAuth, CreateOrganization, useOrganizationList} from '@clerk/clerk-react'
 import { fetchWorkspaces } from '../features/workspaceSlice'
+import { API_BASE_URL } from '../configs/api'
 const Layout = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false)
-    const { loading,workspaces, initialized } = useSelector((state) => state.workspace)
+    const { workspaces, initialized } = useSelector((state) => state.workspace)
     const dispatch = useDispatch()
     const {getToken} = useAuth()
+    const syncEndpointMissing = useRef(false)
    
     
 const { user,isLoaded } = useUser()
     // Initial load of theme
     useEffect(() => {
         dispatch(loadTheme())
-    }, [])
+    }, [dispatch])
 // Initial load of workspace, then keep checking while Clerk finishes org sync.
+const { userMemberships, isLoaded: isOrganizationListLoaded } = useOrganizationList({ userMemberships: true });
+const organizations = useMemo(
+    () => userMemberships?.data?.map((membership) => membership.organization) || [],
+    [userMemberships?.data],
+);
+
+const syncAndLoadWorkspaces = useCallback(async () => {
+    try {
+        if (isOrganizationListLoaded && organizations.length > 0 && !syncEndpointMissing.current) {
+            const response = await fetch(`${API_BASE_URL}/api/workspaces/sync`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${await getToken()}`,
+                },
+                body: JSON.stringify({
+                    organizations,
+                    user: {
+                        id: user?.id,
+                        name: user?.fullName || user?.username || user?.primaryEmailAddress?.emailAddress,
+                        email: user?.primaryEmailAddress?.emailAddress,
+                        image: user?.imageUrl,
+                    },
+                }),
+            });
+            if (response.status === 404) {
+                syncEndpointMissing.current = true;
+            }
+        }
+    } catch (e) {
+        console.log('Workspace sync failed:', e.message || e);
+    }
+
+    dispatch(fetchWorkspaces({getToken}));
+}, [dispatch, getToken, isOrganizationListLoaded, organizations, user]);
+
 useEffect(()=>{
+    let intervalId;
+
     if(isLoaded && user && workspaces.length===0){
-        dispatch(fetchWorkspaces({getToken}))
-        const intervalId = setInterval(() => {
-            dispatch(fetchWorkspaces({getToken}))
+        syncAndLoadWorkspaces();
+        intervalId = setInterval(() => {
+            syncAndLoadWorkspaces();
         }, 2000)
 
         return () => clearInterval(intervalId)
     }
-},[dispatch, getToken, user, isLoaded, workspaces.length])
+},[isLoaded, user, workspaces.length, syncAndLoadWorkspaces])
 
 if(!user){
     return(
