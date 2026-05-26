@@ -2,7 +2,6 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import express from "express";
-import cors from "cors";
 import { clerkMiddleware } from "@clerk/express";
 import { verifyWebhook } from "@clerk/backend/webhooks";
 import { serve } from "inngest/express";
@@ -43,20 +42,6 @@ const isAllowedOrigin = (origin) => {
   return false;
 };
 
-const corsOptions = {
-  origin(origin, callback) {
-    if (isAllowedOrigin(origin)) {
-      callback(null, true);
-    } else {
-      console.error("Blocked CORS origin:", origin);
-      callback(null, false);
-    }
-  },
-  credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-};
-
 app.use((req, res, next) => {
   const origin = req.get("origin");
 
@@ -77,8 +62,6 @@ app.use((req, res, next) => {
 
   next();
 });
-
-app.use(cors(corsOptions));
 app.post(
   "/api/webhooks/clerk",
   express.raw({ type: "application/json" }),
