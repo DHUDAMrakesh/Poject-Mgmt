@@ -16,8 +16,18 @@ import ProjectRouter from "./Routes/projectRoutes.js";
 
 const app = express();
 
-app.use(cors());
-
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://poject-mgmt-nvqr-git-main-dhudamrakesh0-3330s-projects.vercel.app",
+    ],
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  }),
+);
+app.options("*", cors());
 app.post(
   "/api/webhooks/clerk",
   express.raw({ type: "application/json" }),
