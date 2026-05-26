@@ -16,14 +16,24 @@ import ProjectRouter from "./Routes/projectRoutes.js";
 
 const app = express();
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  process.env.FRONTEND_URL,
+  "https://poject-mgmt-nvqr-git-main-dhudamrakesh0-3330s-projects.vercel.app",
+  "https://poject-mgmt-yo7u-a7gjvlxwk-dhudamrakesh0-3330s-projects.vercel.app",
+].filter(Boolean);
+
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "https://poject-mgmt-nvqr-git-main-dhudamrakesh0-3330s-projects.vercel.app",
-    ],
+    origin(origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error(`CORS policy blocked origin: ${origin}`));
+      }
+    },
     credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
   }),
 );
