@@ -24,7 +24,8 @@ const allowedOrigins = [
 const isAllowedOrigin = (origin) => {
   if (!origin) return true;
   if (allowedOrigins.includes(origin)) return true;
-  return /^https:\/\/poject\-mgmt\-[a-z0-9-]+\.vercel\.app$/.test(origin);
+  if (/^https:\/\/.*\.vercel\.app$/.test(origin)) return true;
+  return false;
 };
 
 const corsOptions = {
@@ -32,6 +33,7 @@ const corsOptions = {
     if (isAllowedOrigin(origin)) {
       callback(null, true);
     } else {
+      console.error("Blocked CORS origin:", origin);
       callback(new Error(`CORS policy blocked origin: ${origin}`));
     }
   },
