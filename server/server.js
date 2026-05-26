@@ -19,11 +19,27 @@ const app = express();
 const allowedOrigins = [
   "http://localhost:5173",
   process.env.FRONTEND_URL,
-].filter(Boolean);
+  process.env.CLIENT_URL,
+  process.env.CORS_ORIGINS,
+]
+  .filter(Boolean)
+  .flatMap((origin) => origin.split(","))
+  .map((origin) => origin.trim().replace(/\/$/, ""))
+  .filter(Boolean);
+
 const isAllowedOrigin = (origin) => {
   if (!origin) return true;
-  if (allowedOrigins.includes(origin)) return true;
-  if (/^https:\/\/.*\.vercel\.app$/.test(origin)) return true;
+
+  const normalizedOrigin = origin.trim().replace(/\/$/, "");
+  if (allowedOrigins.includes(normalizedOrigin)) return true;
+
+  try {
+    const { hostname, protocol } = new URL(normalizedOrigin);
+    if (protocol === "https:" && hostname.endsWith(".vercel.app")) return true;
+  } catch {
+    return false;
+  }
+
   return false;
 };
 
@@ -33,7 +49,7 @@ const corsOptions = {
       callback(null, true);
     } else {
       console.error("Blocked CORS origin:", origin);
-      callback(new Error(`CORS policy blocked origin: ${origin}`));
+      callback(null, false);
     }
   },
   credentials: true,
