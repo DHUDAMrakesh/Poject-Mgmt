@@ -77,9 +77,20 @@ app.post(
     }
 
     const data = event.data;
+    const rawType = event.type || "";
+    const type = rawType.startsWith("clerk/")
+      ? rawType.replace(/^clerk\//, "")
+      : rawType;
+
+    console.log(
+      "Received Clerk webhook event:",
+      type,
+      "for",
+      data?.id || data?.organization_id || "unknown",
+    );
 
     try {
-      if (event.type === "user.created" || event.type === "user.updated") {
+      if (type === "user.created" || type === "user.updated") {
         const email = data.email_addresses?.[0]?.email_address ?? "";
         const name =
           `${data.first_name || ""} ${data.last_name || ""}`.trim() ||
@@ -102,9 +113,86 @@ app.post(
         });
       }
 
-      if (event.type === "user.deleted") {
+      if (type === "user.deleted") {
         await prisma.user.deleteMany({
           where: { id: data.id },
+        });
+      }
+
+      if (type === "organization.created") {
+        await prisma.$transaction(async (tx) => {
+          await tx.workspace.upsert({
+            where: { id: data.id },
+            create: {
+              id: data.id,
+              name: data.name,
+              slug: data.slug,
+              ownerId: data.created_by,
+              image_url: data.image_url,
+            },
+            update: {
+              name: data.name,
+              slug: data.slug,
+              ownerId: data.created_by,
+              image_url: data.image_url,
+            },
+          });
+
+          await tx.workspaceMember.upsert({
+            where: {
+              userId_workspaceId: {
+                userId: data.created_by,
+                workspaceId: data.id,
+              },
+            },
+            create: {
+              userId: data.created_by,
+              workspaceId: data.id,
+              role: "ADMIN",
+            },
+            update: {
+              role: "ADMIN",
+            },
+          });
+        });
+      }
+
+      if (type === "organization.updated") {
+        await prisma.workspace.update({
+          where: { id: data.id },
+          data: {
+            name: data.name,
+            slug: data.slug,
+            image_url: data.image_url,
+          },
+        });
+      }
+
+      if (type === "organization.deleted") {
+        await prisma.workspace.delete({
+          where: { id: data.id },
+        });
+      }
+
+      if (type === "organizationInvitation.accepted") {
+        const role = String(data.role_name || "MEMBER").toUpperCase();
+        const workspaceId = data.organization_id;
+
+        await prisma.workspaceMember.upsert({
+          where: {
+            userId_workspaceId: {
+              userId: data.user_id,
+              workspaceId,
+            },
+          },
+          create: {
+            userId: data.user_id,
+            workspaceId,
+            role: role === "ADMIN" ? "ADMIN" : "MEMBER",
+          },
+          update: {
+            role: role === "ADMIN" ? "ADMIN" : "MEMBER",
+          },
         });
       }
 
