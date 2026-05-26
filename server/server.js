@@ -19,24 +19,29 @@ const app = express();
 const allowedOrigins = [
   "http://localhost:5173",
   process.env.FRONTEND_URL,
-  "https://poject-mgmt-nvqr-git-main-dhudamrakesh0-3330s-projects.vercel.app",
-  "https://poject-mgmt-yo7u-a7gjvlxwk-dhudamrakesh0-3330s-projects.vercel.app",
 ].filter(Boolean);
 
-app.use(
-  cors({
-    origin(origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error(`CORS policy blocked origin: ${origin}`));
-      }
-    },
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  }),
-);
+const isAllowedOrigin = (origin) => {
+  if (!origin) return true;
+  if (allowedOrigins.includes(origin)) return true;
+  return /^https:\/\/poject\-mgmt\-[a-z0-9-]+\.vercel\.app$/.test(origin);
+};
+
+const corsOptions = {
+  origin(origin, callback) {
+    if (isAllowedOrigin(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error(`CORS policy blocked origin: ${origin}`));
+    }
+  },
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+};
+
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 app.post(
   "/api/webhooks/clerk",
   express.raw({ type: "application/json" }),
