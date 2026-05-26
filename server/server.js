@@ -37,7 +37,6 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization"],
   }),
 );
-app.options("*", cors());
 app.post(
   "/api/webhooks/clerk",
   express.raw({ type: "application/json" }),
