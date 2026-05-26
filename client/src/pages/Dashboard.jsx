@@ -5,13 +5,13 @@ import ProjectOverview from '../components/ProjectOverview'
 import RecentActivity from '../components/RecentActivity'
 import TasksSummary from '../components/TasksSummary'
 import CreateProjectDialog from '../components/CreateProjectDialog'
-
+import {useUser} from '@clerk/clerk-react'
 const Dashboard = () => {
 
-    const user = { fullName: 'User' }
+    const {user} = useUser()
     const [isDialogOpen, setIsDialogOpen] = useState(false)
 
-    return (
+    return ( 
         <div className='max-w-6xl mx-auto'>
             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 ">
                 <div>

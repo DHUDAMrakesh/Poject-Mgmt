@@ -2,8 +2,16 @@ import { format } from "date-fns";
 import { Plus, Save } from "lucide-react";
 import { useEffect, useState } from "react";
 import AddProjectMember from "./AddProjectMember";
+import { useDispatch } from "react-redux";
+import { useAuth } from "@clerk/clerk-react";
+import toast from "react-hot-toast";
+import api from "../configs/api";
+import { fetchWorkspaces } from "../features/workspaceSlice";
 
 export default function ProjectSettings({ project }) {
+    const dispatch=useDispatch()
+    const {getToken}=useAuth();
+
 
     const [formData, setFormData] = useState({
         name: "New Website Launch",
@@ -20,7 +28,20 @@ export default function ProjectSettings({ project }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsSubmitting(true)
+        toast.loading("Saving...")
+        try {
+            const {data} = await api.put('/api/projects',formData,{headers:{Authorization: `Bearer ${await getToken()}`}})
+            dispatch(fetchWorkspaces({getToken}))
+            toast.dismissAll();
+            toast.success(data.message)
+        } catch (error) {
+                        toast.dismissAll();
+                        toast.error(error?.response?.data?.message || error.message)
 
+        } finally{
+            setIsSubmitting(false)
+        }
     };
 
     useEffect(() => {
@@ -78,11 +99,21 @@ export default function ProjectSettings({ project }) {
                     <div className="space-y-4 grid grid-cols-2 gap-4">
                         <div className="space-y-2">
                             <label className={labelClasses}>Start Date</label>
-                            <input type="date" value={format(formData.start_date, "yyyy-MM-dd")} onChange={(e) => setFormData({ ...formData, start_date: new Date(e.target.value) })} className={inputClasses} />
+                            <input
+                                type="date"
+                                value={formData.start_date ? format(new Date(formData.start_date), "yyyy-MM-dd") : ""}
+                                onChange={(e) => setFormData({ ...formData, start_date: e.target.value })}
+                                className={inputClasses}
+                            />
                         </div>
                         <div className="space-y-2">
                             <label className={labelClasses}>End Date</label>
-                            <input type="date" value={format(formData.end_date, "yyyy-MM-dd")} onChange={(e) => setFormData({ ...formData, end_date: new Date(e.target.value) })} className={inputClasses} />
+                            <input
+                                type="date"
+                                value={formData.end_date ? format(new Date(formData.end_date), "yyyy-MM-dd") : ""}
+                                onChange={(e) => setFormData({ ...formData, end_date: e.target.value })}
+                                className={inputClasses}
+                            />
                         </div>
                     </div>
 
@@ -104,7 +135,7 @@ export default function ProjectSettings({ project }) {
                 <div className={cardClasses}>
                     <div className="flex items-center justify-between gap-4">
                         <h2 className="text-lg font-medium text-zinc-900 dark:text-zinc-300 mb-4">
-                            Team Members <span className="text-sm text-zinc-600 dark:text-zinc-400">({project.members.length})</span>
+                            Team Members <span className="text-sm text-zinc-600 dark:text-zinc-400">({project?.members?.length || 0})</span>
                         </h2>
                         <button type="button" onClick={() => setIsDialogOpen(true)} className="p-2 rounded-lg border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800" >
                             <Plus className="size-4 text-zinc-900 dark:text-zinc-300" />
@@ -113,12 +144,14 @@ export default function ProjectSettings({ project }) {
                     </div>
 
                     {/* Member List */}
-                    {project.members.length > 0 && (
+                    {project?.members?.length > 0 && (
                         <div className="space-y-2 mt-2 max-h-32 overflow-y-auto">
                             {project.members.map((member, index) => (
                                 <div key={index} className="flex items-center justify-between px-3 py-2 rounded dark:bg-zinc-800 text-sm text-zinc-900 dark:text-zinc-300" >
                                     <span> {member?.user?.email || "Unknown"} </span>
-                                    {project.team_lead === member.user.id && <span className="px-2 py-0.5 rounded-xs ring ring-zinc-200 dark:ring-zinc-600">Team Lead</span>}
+                                    {project.team_lead === member?.user?.id && (
+                                        <span className="px-2 py-0.5 rounded-xs ring ring-zinc-200 dark:ring-zinc-600">Team Lead</span>
+                                    )}
                                 </div>
                             ))}
                         </div>

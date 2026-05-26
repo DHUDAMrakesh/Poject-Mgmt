@@ -3,7 +3,7 @@ import prisma from "../configs/prisma.js";
 
 export const createProject = async (req, res) => {
   try {
-    const { userId } = await req.auth;
+    const { userId } = await req.auth();
     const {
       workspaceId,
       description,
@@ -11,7 +11,6 @@ export const createProject = async (req, res) => {
       status,
       start_date,
       end_date,
-      ennd_date,
       team_members,
       team_lead,
       progress,
@@ -20,22 +19,40 @@ export const createProject = async (req, res) => {
     // check if user has admin role for workspace
     const workspace = await prisma.workspace.findUnique({
       where: { id: workspaceId },
-      include: { members: true },
+      include: { members: { include: { user: true } } },
     });
     if (!workspace) {
       return res.status(404).json({ message: "Workspace not found" });
     }
 
-    if (
-      !workspace.members.some(
-        (member) => member.userId === userId && member.role === "admin",
-      )
-    ) {
-      return res
-        .status(403)
-        .json({
-          message: "Forbidden: Only workspace admins can create projects",
-        });
+    const isWorkspaceOwner = workspace.ownerId === userId;
+    const isWorkspaceAdmin = workspace.members.some(
+      (member) => member.userId === userId && member.role === "ADMIN",
+    );
+
+    if (!isWorkspaceOwner && !isWorkspaceAdmin) {
+      return res.status(403).json({
+        message: "Forbidden: Only workspace admins can create projects",
+      });
+    }
+
+    if (isWorkspaceOwner && !isWorkspaceAdmin) {
+      await prisma.workspaceMember.upsert({
+        where: {
+          userId_workspaceId: {
+            userId,
+            workspaceId,
+          },
+        },
+        create: {
+          userId,
+          workspaceId,
+          role: "ADMIN",
+        },
+        update: {
+          role: "ADMIN",
+        },
+      });
     }
     // get team lead using email
 
@@ -43,6 +60,11 @@ export const createProject = async (req, res) => {
       where: { email: team_lead },
       select: { id: true },
     });
+
+    if (!teamLead) {
+      return res.status(404).json({ message: "Project lead not found" });
+    }
+
     const project = await prisma.project.create({
       data: {
         workspaceId,
@@ -51,41 +73,42 @@ export const createProject = async (req, res) => {
         status,
         start_date: start_date ? new Date(start_date) : null,
         end_date: end_date ? new Date(end_date) : null,
-        team_members,
         team_lead: teamLead?.id,
         progress,
         priority,
       },
     });
     // add members to  the project if they are in the workspace
-    if (team_members && team_members.length > 0) {
-      const membersToAdd = [];
-      workspace.members.forEach((member) => {
-        if (team_members.includes(member.user.email)) {
-          membersToAdd.push(member.user.id);
-        }
-      });
+    const memberEmails = Array.isArray(team_members) ? team_members : [];
+    const membersToAdd = workspace.members
+      .filter((member) => memberEmails.includes(member.user.email))
+      .map((member) => member.user.id);
+
+    if (membersToAdd.length > 0) {
       await prisma.projectMember.createMany({
         data: membersToAdd.map((memberId) => ({
           projectId: project.id,
           userId: memberId,
         })),
-      });
-      const projectWithMembers = await prisma.project.findUnique({
-        where: { id: project.id },
-        include: {
-          members: { include: { user: true } },
-          tasks: {
-            include: { assignee: true, comments: { include: { user: true } } },
-          },
-          owner: true,
-        },
-      });
-      res.json({
-        project: projectWithMembers,
-        members: "project created successfully",
+        skipDuplicates: true,
       });
     }
+
+    const projectWithMembers = await prisma.project.findUnique({
+      where: { id: project.id },
+      include: {
+        members: { include: { user: true } },
+        tasks: {
+          include: { assignee: true, comments: { include: { user: true } } },
+        },
+        owner: true,
+      },
+    });
+
+    res.json({
+      project: projectWithMembers,
+      message: "Project created successfully",
+    });
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: error.code || error.message });
@@ -95,7 +118,7 @@ export const createProject = async (req, res) => {
 //Update project
 export const updateProject = async (req, res) => {
   try {
-    const { userId } = await req.auth;
+    const { userId } = await req.auth();
     const {
       id,
       workspaceId,
@@ -116,14 +139,14 @@ export const updateProject = async (req, res) => {
       include: { members: true },
     });
     if (!workspace) {
-      return;
-      res.status(404).json({ message: "Workspace not found" });
+      return res.status(404).json({ message: "Workspace not found" });
     }
-    if (
-      !workspace.members.some(
-        (member) => member.userId === userId && member.role === "ADMIN",
-      )
-    ) {
+    const isWorkspaceOwner = workspace.ownerId === userId;
+    const isWorkspaceAdmin = workspace.members.some(
+      (member) => member.userId === userId && member.role === "ADMIN",
+    );
+
+    if (!isWorkspaceOwner && !isWorkspaceAdmin) {
       const project = await prisma.project.findUnique({
         where: { id },
       });
@@ -137,7 +160,7 @@ export const updateProject = async (req, res) => {
           });
       }
     }
-    const projecct = await prisma.project.update({
+    const updatedProject = await prisma.project.update({
       where: { id },
       data: {
         workspaceId,
@@ -149,7 +172,7 @@ export const updateProject = async (req, res) => {
         end_date: end_date ? new Date(end_date) : null,
       },
     });
-    res.json({ message: "Project updated successfully" });
+    res.json({ message: "Project updated successfully", project: updatedProject });
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: error.code || error.message });
@@ -159,7 +182,7 @@ export const updateProject = async (req, res) => {
 //add member to project
 export const addMemberToProject = async (req, res) => {
   try {
-    const { userId } = await req.auth;
+    const { userId } = await req.auth();
     const { projectId } = req.params;
     const { email } = req.body;
 

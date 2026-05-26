@@ -164,16 +164,29 @@ export const syncWorkspaceMemberCreation = inngest.createFunction(
     const data = event.data;
     const role = String(data.role_name || "MEMBER").toUpperCase();
 
+    // The organization_id from Clerk is the workspace ID (since workspace.id = clerk org ID)
+    const workspaceId = data.organization_id;
+
+    // Verify workspace exists
+    const workspace = await prisma.workspace.findUnique({
+      where: { id: workspaceId },
+    });
+
+    if (!workspace) {
+      console.log(`Workspace not found for workspace ID: ${workspaceId}`);
+      return;
+    }
+
     await prisma.workspaceMember.upsert({
       where: {
         userId_workspaceId: {
           userId: data.user_id,
-          workspaceId: data.organization_id,
+          workspaceId: workspaceId,
         },
       },
       create: {
         userId: data.user_id,
-        workspaceId: data.organization_id,
+        workspaceId: workspaceId,
         role: role === "ADMIN" ? "ADMIN" : "MEMBER",
       },
       update: {

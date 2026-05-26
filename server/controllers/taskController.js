@@ -3,7 +3,10 @@ import { inngest } from "../inngest/index.js";
 // create Task
 export const createTask = async (req, res) => {
   try {
+    // Clerk auth
+    console.log(req.body);
     const { userId } = await req.auth();
+
     const {
       projectId,
       title,
@@ -16,40 +19,78 @@ export const createTask = async (req, res) => {
     } = req.body;
     const origin = req.get("origin");
 
-    // check if user  has admin role for project
+    // Find project
     const project = await prisma.project.findUnique({
       where: { id: projectId },
-      include: { members: { include: { user: true } } },
-    });
-    if (!project) {
-      return res.status(404).json({ message: "Project not found" });
-    } else if (project.team_lead !== userId) {
-      return res
-        .status(403)
-        .json({ message: " you don't have privilieges for this project" });
-    } else if (
-      assigneeId &&
-      !project.members.find((member) => member.userId === assigneeId)
-    ) {
-      return res
-        .status(400)
-        .json({ message: "Assignee is not a member of the project/workspace" });
-    }
-    const task = await prisma.task.create({
-      data: {
-        projectId,
-        title,
-        description,
-        status,
-        priority,
-        assigneeId,
-        due_date: new Date(due_date),
+      include: {
+        members: {
+          include: { user: true },
+        },
       },
     });
+
+    // Project not found
+    if (!project) {
+      return res.status(404).json({
+        message: "Project not found",
+      });
+    }
+
+    // Check if user is team lead or project member
+    const isTeamLead = project.team_lead === userId;
+    const isProjectMember = project.members.some(
+      (member) => member.userId === userId,
+    );
+
+    if (!isTeamLead && !isProjectMember) {
+      return res.status(403).json({
+        message: "You don't have privileges for this project",
+      });
+    }
+
+    // Validate assignee
+    if (
+      assigneeId &&
+      !project.members.some((member) => member.userId === assigneeId)
+    ) {
+      return res.status(400).json({
+        message: "Assignee is not a member of the project/workspace",
+      });
+    }
+
+    // Create task
+    const taskData = {
+      projectId,
+      title,
+      description,
+      status,
+      priority,
+      type,
+      assigneeId,
+      due_date: new Date(due_date),
+    };
+
+    if (assigneeId) {
+      taskData.assigneeId = assigneeId;
+    }
+
+    if (due_date) {
+      taskData.due_date = new Date(due_date);
+    }
+
+    const task = await prisma.task.create({
+      data: taskData,
+    });
+
+    // Get task with assignee
     const taskWithAssignee = await prisma.task.findUnique({
       where: { id: task.id },
-      include: { assignee: true },
+      include: {
+        assignee: true,
+      },
     });
+
+    // Trigger email/event
     await inngest.send({
       name: "app/task.assigned",
       data: {
@@ -58,15 +99,25 @@ export const createTask = async (req, res) => {
       },
     });
 
-    res.json({ message: "Task created successfully", task: taskWithAssignee });
+    return res.json({
+      message: "Task created successfully",
+      task: taskWithAssignee,
+    });
   } catch (error) {
-    res.status(500).json({ message: "Error creating task", error });
+    console.error("CREATE TASK ERROR:", error);
+
+    return res.status(500).json({
+      message: "Error creating task",
+      error: error.message,
+    });
   }
 };
 
 //  update Task
 export const updateTask = async (req, res) => {
   try {
+    const { userId } = await req.auth();
+
     const task = await prisma.task.findUnique({
       where: { id: req.params.id },
     });
@@ -91,12 +142,11 @@ export const updateTask = async (req, res) => {
     });
 
     res.json({
-      task: updatedTask,
       message: "Task updated successfully",
       task: updatedTask,
     });
   } catch (error) {
-    res.status(500).json({ message: "Error creating task", error });
+    res.status(500).json({ message: "Error updating task", error });
   }
 };
 
@@ -104,9 +154,9 @@ export const updateTask = async (req, res) => {
 export const deleteTask = async (req, res) => {
   try {
     const { userId } = await req.auth();
-    const { taskId } = req.body;
+    const { taskIds } = req.body;
     const task = await prisma.task.findMany({
-      where: { id: { in: taskId } },
+      where: { id: { in: taskIds } },
     });
     if (task.length === 0) {
       return res.status(404).json({ message: "Task not found" });
@@ -129,6 +179,6 @@ export const deleteTask = async (req, res) => {
 
     res.json({ message: "Task deleted successfully" });
   } catch (error) {
-    res.status(500).json({ message: "Error creating task", error });
+    res.status(500).json({ message: "Error deleting task", error });
   }
 };
